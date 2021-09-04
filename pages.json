@@ -1,0 +1,81 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/home/home",
+			"style": {
+				"navigationBarTitleText": "首页"
+			}
+		}
+	    ,{
+            "path" : "pages/booking/booking",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "预约时间表",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/record/record",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "预约记录",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/admin/admin",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "管理员",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+        ,{
+            "path" : "pages/booking/booking",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"color": "#7A7E83",
+		"selectedColor": "#aa0000",
+		"borderStyle": "black",
+		"backgroundColor": "#F8F8F8",
+		"list": [{
+				"pagePath": "pages/home/home",
+				"iconPath": "static/home_off.png",
+				"selectedIconPath": "static/home_on.png",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/booking/booking",
+				"iconPath": "static/timetable_off.png",
+				"selectedIconPath": "static/timetable_on.png",
+				"text": "我要预约"
+			}, {
+				"pagePath": "pages/record/record",
+				"iconPath": "static/record_off.png",
+				"selectedIconPath": "static/record_on.png",
+				"text": "预约记录"
+			}, {
+				"pagePath": "pages/admin/admin",
+				"iconPath": "static/admin_off.png",
+				"selectedIconPath": "static/admin_on.png",
+				"text": "管理员"
+			}
+		]
+	}
+}

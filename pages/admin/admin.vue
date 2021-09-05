@@ -28,7 +28,7 @@
 				</uni-forms-item>
 				
 			</uni-forms>
-			<button @click="submit">提交</button>
+			<button style="background-color: #DC7004; color: white;"@click="submit">提交</button>
 		</view>
 
 	</view>

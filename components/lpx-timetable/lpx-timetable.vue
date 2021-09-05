@@ -81,8 +81,6 @@
         //为数据标记背景颜色的函数
 		const getBackgroundColor = color_index => {
 			var backgroundColor = '';
-			console.log(color_index);
-			console.log(this.available[color_index])
 			if(this.available[color_index])	backgroundColor = this.allPalette[1]
 			else backgroundColor = this.allPalette[0]
           return backgroundColor

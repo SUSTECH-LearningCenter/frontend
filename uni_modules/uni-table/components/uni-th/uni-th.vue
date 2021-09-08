@@ -1,6 +1,6 @@
 <template>
 	<!-- #ifdef H5 -->
-	<th :rowspan="rowspan" :colspan="colspan" class="uni-table-th" :class="{ 'table--border': border }" :style="{ width: width + 'px', 'text-align': align }">
+	<th :rowspan="rowspan" :colspan="colspan" class="uni-table-th" :class="{ 'table--border': border }" :style="{ width: width + '%', 'text-align': align }">
 		<view class="uni-table-th-row">
 			<view class="uni-table-th-content" :style="{ 'justify-content': contentAlign }" @click="sort">
 				<slot></slot>

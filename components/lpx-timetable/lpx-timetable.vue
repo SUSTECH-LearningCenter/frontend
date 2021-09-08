@@ -64,6 +64,7 @@
 	      return []
 	    }
 	  },
+	  week_index:0,
       palette: {
         type: Array,
         default: () => {
@@ -128,8 +129,11 @@
           weekIndex: weekIndex,
           name: course.name
         }
-        console.log(`星期${data.week}; 第${data.index}节课; 课程名:${data.name}; 课节:${data.length}`)
-        console.log(data)
+		console.log("weeK"+this.week_index+"day"+weekIndex+"time："+courseIndex)
+		uni.navigateTo({
+			
+		    url: '../../pages/square_detail/square_detail?week='+this.week_index+"&day="+weekIndex+"&time="+courseIndex
+		});
         this.$emit('courseClick', data)
       }
     }

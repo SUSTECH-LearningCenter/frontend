@@ -42,6 +42,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/square_detail/square_detail",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

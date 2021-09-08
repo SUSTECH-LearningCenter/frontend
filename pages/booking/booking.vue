@@ -3,8 +3,8 @@
 		<view class="head">
 			<view class="part1">
 				<view>
-					<picker @change="bindPickerChange" :value="index" :range="array" range-key="name">
-						<view style="padding: 20rpx;background-color: white;">{{ array[index].name }}</view>
+					<picker @change="bindPickerChange" :value="week_index" :range="array" range-key="name">
+						<view style="padding: 20rpx;background-color: white;">{{ array[week_index].name }}</view>
 					</picker>
 				</view>
 				<view>
@@ -23,7 +23,7 @@
 			</view>
 		</view>
 
-		<timetable :timetables="timetables" :available="available"></timetable>
+		<timetable :timetables="timetables" :available="available":week_index="week_index+1"></timetable>
 	</view>
 </template>
 
@@ -85,13 +85,12 @@
 						name: '第二十周'
 					}
 				],
-				index: 0,
+				week_index: 0,
 			}
 		},
 		methods: {
 			bindPickerChange: function(e) {
-				this.index = e.detail.value;
-				console.log(this.index)
+				this.week_index = e.detail.value;
 				this.update_page(e.detail.value+1)
 
 			},
@@ -103,7 +102,6 @@
 						"weekId": week,
 					},
 					success: res => {
-						console.log("getMachineNum success:" + JSON.stringify(res));
 						this.timetables = res.data
 					},
 					fail: (e) => {
@@ -119,7 +117,6 @@
 						"weekId": week,
 					},
 					success: res => {
-						console.log("getMachineNum success:" + JSON.stringify(res.data));
 						this.available = res.data
 					},
 					fail: (e) => {

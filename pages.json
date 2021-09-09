@@ -51,6 +51,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/booking_detail/booking_detail",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

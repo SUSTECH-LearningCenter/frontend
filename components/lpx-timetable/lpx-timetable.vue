@@ -131,7 +131,6 @@
         }
 		console.log("weeK"+this.week_index+"day"+weekIndex+"time："+courseIndex)
 		uni.navigateTo({
-			
 		    url: '../../pages/square_detail/square_detail?week='+this.week_index+"&day="+weekIndex+"&time="+courseIndex
 		});
         this.$emit('courseClick', data)

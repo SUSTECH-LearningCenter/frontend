@@ -22,7 +22,7 @@
 					<uni-td align="center">{{ item.status }}</uni-td>
 					<uni-td>
 						<view class="uni-group">
-							<button class="uni-button" size="mini" type="primary">预约</button>
+							<button class="uni-button" size="mini" type="primary" @click="book(item.id)">预约</button>
 						</view>
 					</uni-td>
 				</uni-tr>
@@ -40,26 +40,9 @@
 				week: 0,
 				day: 0,
 				time: 0,
-				//from the record
-				information: [
-					{
-					"avatar": "https://img2.baidu.com/it/u=3355464299,584008140&fm=26&fmt=auto&gp=0.jpg",
-					"advisorName": "绿洲",
-					"prof": "副首领",
-					"prefer": "雷龙一字划",
-					"intro": "部落冲突半年老玩家",
-					"status": "已预约",
-					"more" :
-					    {
-							"avatar": "",
-							"prof": "",
-							"prefer": "",
-							"intro": ""
-				 	    }
-				}, 
-				
-				],
-				real_information:[]
+				information: [],
+				inputID: '',
+				inputcode:'',
 			}
 		},
 		onLoad: function(option) {
@@ -82,12 +65,12 @@
 						"prefer": "",
 						"intro": ""
 					}
-					for (var i=0; i<temp.length; i++)
-				    {
+					for (var i = 0; i < temp.length; i++) {
 						temp[i].more = m
 					}
-					this.information=temp
+					this.information = temp
 					this.update_data()
+					console.log(this.information)
 				},
 				fail: (e) => {
 					console.log("getMachineNum fail:" + JSON.stringify(e));
@@ -99,11 +82,11 @@
 		methods: {
 			update_data: function() {
 				var length = this.information.length
-				for(var i = 0;i<length;i++){
+				for (var i = 0; i < length; i++) {
 					this.find_data(i)
 				}
 			},
-			find_data: function(i){
+			find_data: function(i) {
 				uni.request({
 					url: 'http://learningcenter.sustech.edu.cn:1000/api/main/tutor',
 					method: 'GET',
@@ -111,15 +94,21 @@
 						"SID": this.information[i].advisorId,
 					},
 					success: res => {
-						this.information[i].more= res.data
+						this.information[i].more = res.data
 					},
 					fail: (e) => {
 						console.log("getMachineNum fail:" + JSON.stringify(e));
 					},
 					complete: () => {}
-				
+
 				})
 			},
+			book: function(arg) {
+				uni.navigateTo({
+				    url: "../booking_detail/booking_detail?tutorID="+arg
+				});
+			},
+			
 		}
 	}
 </script>
@@ -135,5 +124,4 @@
 		display: flex;
 		align-items: center;
 	}
-	
 </style>

@@ -1,9 +1,6 @@
 <template>
 	<view class="content">
-		<image class="logo" src="/static/logo.png"></image>
-		<view class="text-area">
-			<text class="title">{{title}}</text>
-		</view>
+		<image class="logo" src="/static/mylogo.png"></image>
 	</view>
 </template>
 
@@ -11,7 +8,7 @@
 	export default {
 		data() {
 			return {
-				title: 'Hello'
+				
 			}
 		},
 		onLoad() {
@@ -27,13 +24,13 @@
 	.content {
 		display: flex;
 		flex-direction: column;
-		align-items: center;
-		justify-content: center;
+		/* align-items: center; */
+		/* justify-content: center; */
 	}
 
 	.logo {
-		height: 200rpx;
-		width: 200rpx;
+		height: 400rpx;
+		width: 400rpx;
 		margin-top: 200rpx;
 		margin-left: auto;
 		margin-right: auto;

@@ -22,7 +22,7 @@
 					<uni-td align="center">{{ item.status }}</uni-td>
 					<uni-td>
 						<view class="uni-group">
-							<button class="uni-button" size="mini" type="primary" @click="book(item.id)">预约</button>
+							<button class="uni-button" style="background-color: #003e00; color: white;" size="mini" type="primary" @click="book(item.id)">预约</button>
 						</view>
 					</uni-td>
 				</uni-tr>

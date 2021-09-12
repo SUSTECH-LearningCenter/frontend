@@ -4,7 +4,9 @@
 			<view class="part1">
 				<view>
 					<picker @change="bindPickerChange" :value="week_index" :range="array" range-key="name">
-						<view style="padding: 20rpx;background-color: white;">{{ array[week_index].name }}</view>
+						<view style="padding: 20rpx;background-color: white; color: #ff8737;border: solid #ff8737;">
+						    {{ array[week_index].name }}
+						</view>
 					</picker>
 				</view>
 				<view>

@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "timetable": "/components/lpx-timetable/lpx-timetable"
+  }
+}

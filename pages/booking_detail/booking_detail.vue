@@ -21,7 +21,9 @@
 				<uni-forms-item label="咨询内容" required name="content">
 					<uni-easyinput v-model="baseFormData.content" placeholder="请输入希望交流的内容" />
 				</uni-forms-item>
-				<button style="background-color: #DC7004; color: white;" @click="getCode">获取邮箱验证码</button>
+				<button style="background-color: #DC7004; color: white;" @click="getCode">
+					获取邮箱验证码
+				</button>
 				<uni-forms-item label="验证码" required name="code">
 					<uni-easyinput v-model="baseFormData.code" placeholder="请检查邮箱,输入验证码" />
 				</uni-forms-item>

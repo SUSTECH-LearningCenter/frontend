@@ -151,7 +151,7 @@
 	color: #666;
 }
 .popup-x-footer text:hover {
-	color: #003e00;
+	color: #007aff;
 	cursor: pointer;
 	opacity: 0.8;
 }

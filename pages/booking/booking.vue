@@ -1,5 +1,5 @@
 <template>
-	<view>
+	<view class="content">
 		<view class="head">
 			<view class="part1">
 				<view>
@@ -9,9 +9,9 @@
 						</view>
 					</picker>
 				</view>
-				<view>
-					<text><——点击改周次 </text>
-				</view>
+				<!-- <view>
+					<text>点击改周次 </text>
+				</view> -->
 			</view>
 			<view class="part2">
 				<view>
@@ -25,7 +25,7 @@
 			</view>
 		</view>
 
-		<timetable :timetables="timetables" :available="available":week_index="week_index+1"></timetable>
+		<timetable class="tb" :timetables="timetables" :available="available" :week_index="week_index+1"></timetable>
 	</view>
 </template>
 
@@ -98,14 +98,16 @@
 			},
 			update_page: function(week) {
 				uni.request({
-					url: 'http://learningcenter.sustech.edu.cn:1000/api/main/get-by-week2',
+					url: getApp().globalData.url+'api/main/get-by-week2',
 					method: 'GET',
 					data: {
 						"weekId": week,
 					},
 					success: res => {
 						this.timetables = res.data
+						console.log(res.data)
 					},
+
 					fail: (e) => {
 						console.log("getMachineNum fail:" + JSON.stringify(e));
 					},
@@ -113,13 +115,14 @@
 				});
 				
 				uni.request({
-					url: 'http://learningcenter.sustech.edu.cn:1000/api/main/get-by-week3',
+					url: getApp().globalData.url+'api/main/get-by-week3',
 					method: 'GET',
 					data: {
 						"weekId": week,
 					},
 					success: res => {
 						this.available = res.data
+						console.log(res.data)
 					},
 					fail: (e) => {
 						console.log("getMachineNum fail:" + JSON.stringify(e));
@@ -133,11 +136,38 @@
 </script>
 
 <style>
+	page {
+		width: 100%;
+		height: 100%;
+		/* #ifdef H5 */
+		background-image: url('~@/static/background.jpg');
+		/* #endif */
+	}
+	
+	/* #ifdef H5 */
+	.content {
+		width: 70%;
+		margin-left: 15%;
+		margin-right: 15%;
+	}
+	/* #endif */
+	
+	/* #ifdef MP-WEIXIN */
+	.content {
+		width: 	100%;
+	}
+	/* #endif */
+	
+	.tb {
+		opacity: 0.9;
+	}
+	
 	.head {
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
 		align-items: center;
+		opacity: 0.8;
 	}
 
 	.part1 {

@@ -42,7 +42,10 @@
             { index: '9', name: '17:00\n18:00' },
             { index: '10', name: '18:00\n19:00' },
             { index: '11', name: '19:00\n20:00' },
-            { index: '12', name: '20:00\n21:00' }
+            { index: '12', name: '20:00\n21:00' },
+            { index: '13', name: '21:00\n22:00' },
+            { index: '14', name: '22:00\n23:00' },
+            { index: '15', name: '23:00\n24:00' },
           ]
         }
       },
@@ -93,7 +96,7 @@
                     listMerge[i] = []
                   }
                   list.forEach(function (item, index) {
-					  const my_color = getBackgroundColor(i*12+index)
+					  const my_color = getBackgroundColor(i*16+index)
                     if (!index) {
                       return listMerge[i].push({ name: item, length: 1, backgroundColor: item === '' ? 'none' : my_color })
                     }
@@ -129,10 +132,19 @@
           weekIndex: weekIndex,
           name: course.name
         }
-		console.log("weeK"+this.week_index+"day"+weekIndex+"time："+courseIndex)
-		uni.navigateTo({
-		    url: '../../pages/square_detail/square_detail?week='+this.week_index+"&day="+weekIndex+"&time="+courseIndex
-		});
+		if(this.available[weekIndex*16+courseIndex]){
+			console.log("weeK"+this.week_index+"day"+weekIndex+"time："+courseIndex)
+			uni.navigateTo({
+			    url: '../../pages/square_detail/square_detail?week='+this.week_index+"&day="+weekIndex+"&time="+courseIndex
+			});
+		}else{
+			uni.showToast({
+				title: "该时间段不可预约",
+				mask: false,
+				duration: 1500,
+				icon:"none"
+			});
+		}
         this.$emit('courseClick', data)
       }
     }

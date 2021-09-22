@@ -140,7 +140,8 @@
 							            "weekId": first_res.week,
 							            "dayId": first_res.day,
 							            "timeId": first_res.time,
-							            "code": first_res.code
+							            "code": first_res.code,
+										"type":1//0 for student,1 for teacher
 							        },
 							        success: res => {
 							            console.log("getMachineNum success:" + JSON.stringify(res));

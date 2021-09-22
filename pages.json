@@ -1,6 +1,15 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
+		    "path" : "pages/choose/choose",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "",
+		        "enablePullDownRefresh": false
+		    }
+		    
+		},
+		{
 			"path": "pages/home/home",
 			"style": {
 				"navigationBarTitleText": "首页"
@@ -19,7 +28,7 @@
             "path" : "pages/record/record",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "预约记录",
+                "navigationBarTitleText": "个人中心",
                 "enablePullDownRefresh": false
             }
             
@@ -29,15 +38,6 @@
             "style" :                                                                                    
             {
                 "navigationBarTitleText": "管理员",
-                "enablePullDownRefresh": false
-            }
-            
-        }
-        ,{
-            "path" : "pages/booking/booking",
-            "style" :                                                                                    
-            {
-                "navigationBarTitleText": "",
                 "enablePullDownRefresh": false
             }
             
@@ -60,15 +60,32 @@
             }
             
         }
+        
     ],
+	// #ifdef MP-WEIXIN
 	"globalStyle": {
-		"navigationBarTextStyle": "#ffffff",
 		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "white",
 		"backgroundColor": "#F8F8F8",
-		"navigationStyle": "custom"
+		"navigationStyle": "default",
+		
+		
+		"navigationBarTextStyle": "#000000",
+		"navigationBarBackgroundColor": "#000000"
+		
 	},
-
+	// #endif
+	// #ifdef H5
+	"globalStyle": {
+		"navigationBarTitleText": "uni-app",
+		"backgroundColor": "#F8F8F8",
+		"navigationStyle": "custom",
+		
+		
+		"navigationBarTextStyle": "white",
+		"navigationBarBackgroundColor": "white"
+		
+	},
+	// #endif
 
 "tabBar": {
 		"color": "#7A7E83",
@@ -90,12 +107,7 @@
 				"pagePath": "pages/record/record",
 				"iconPath": "static/record_off.png",
 				"selectedIconPath": "static/record_on.png",
-				"text": "预约记录"
-			}, {
-				"pagePath": "pages/admin/admin",
-				"iconPath": "static/admin_off.png",
-				"selectedIconPath": "static/admin_on.png",
-				"text": "管理员"
+				"text": "个人中心"
 			}
 		]
 	}

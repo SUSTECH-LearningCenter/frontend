@@ -123,6 +123,14 @@ view {
 .word-btn--hover {
   background-color: #4ca2ff;
 }
+page {
+  width: 100%;
+  height: 100%;
+}
+.container {
+  width: 100%;
+  height: 100%;
+}
 .example {
   padding: 15px;
   background-color: #fff;

@@ -1,5 +1,5 @@
 <template>
-	<view>
+	<view class="container">
 		<uni-section title="这是预约详情页面" type="line"></uni-section>
 		<view class="example">
 			<uni-forms ref="form" :modelValue="baseFormData" :rules="rules">
@@ -21,14 +21,16 @@
 				<uni-forms-item label="咨询内容" required name="content">
 					<uni-easyinput v-model="baseFormData.content" placeholder="请输入希望交流的内容" />
 				</uni-forms-item>
-				<button style="background-color: #DC7004; color: white;" @click="getCode">
-					获取邮箱验证码
-				</button>
+				<uni-forms-item>
+				    <button style="background-color: #00557f; color: white;" @click="getCode">
+					    获取邮箱验证码
+				    </button>
+				</uni-forms-item>
 				<uni-forms-item label="验证码" required name="code">
 					<uni-easyinput v-model="baseFormData.code" placeholder="请检查邮箱,输入验证码" />
 				</uni-forms-item>
 			</uni-forms>
-			<button style="background-color: #DC7004; color: white;" @click="submit">提交</button>
+			<button style="background-color: #00557f; color: white;" @click="submit">提交</button>
 		</view>
 
 	</view>
@@ -150,6 +152,30 @@
 <style lang="scss">
 	@import '@/common/uni-nvue.scss';
 
+    page {
+		width: 100%;
+		height: 100%;
+		/* #ifdef H5 */
+		background-image: url('~@/static/background.jpg');
+		/* #endif */
+	}
+	
+	/* #ifdef H5 */
+	.container {
+		width: 70%;
+		height: 100%;
+		margin-left: 15%;
+		margin-right: 15%;
+	}
+	/* #endif */
+
+	/* #ifdef MP-WEIXIN */
+	.container {
+		width: 100%;
+		height: 100%;
+	}
+	/* #endif */
+	
 	.example {
 		padding: 15px;
 		background-color: #fff;

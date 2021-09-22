@@ -1,6 +1,24 @@
 
 page {
-	padding-top: 85px;
+	width: 100%;
+	height: 100%;
+}
+.content {
+	width: 100%;
+}
+.uni-container {
+	height: 90%;
+	margin-top: 1.5%;
+	opacity: 0.8;
+}
+.text {
+	font-weight: 600;
+	color: #ff55ff;
+}
+.input {
+	background-color: rgba(255,255,255,0.9);
+	border-radius: 5%/10%;
+	height: auto;
 }
 .uni-group {
 	display: -webkit-box;
@@ -9,8 +27,11 @@ page {
 	-webkit-box-align: center;
 	-webkit-align-items: center;
 	        align-items: center;
+	width: auto;
 }
-.head {
+.head {		
+	width: 100%;
+	height: 10%;
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: flex;
@@ -21,5 +42,33 @@ page {
 	-webkit-box-align: center;
 	-webkit-align-items: center;
 	        align-items: center;
+	margin-top: 2.5%;
+	border-radius: 1%/20%;
+}
+.uni-form-item {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	margin-left: auto;
+}
+.uni-button {
+	background-color: #2C405A;
+}
+.my_infor{
+	width: 100%;
+	height: 20%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: flex;
+	-webkit-box-orient: horizontal;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: row;
+	        flex-direction: row;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	        align-items: center;
+	margin-top: 5%;
+	margin-bottom: 2%;
+	border-radius: 1%/20%;
 }
 

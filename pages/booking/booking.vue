@@ -33,15 +33,33 @@
 	import Timetable from '@/components/lpx-timetable/lpx-timetable.vue'
 	export default {
 		onShow: function() {
-			this.update_page(this.week_index+1)
+			this.update_page(parseInt(this.week_index)+1)
 		},
 		components: {
 			Timetable
 		},
 		data() {
 			return {
-				timetables: [],
-				available: [],
+				// timetables: [
+				// 	["张三\n陈狗蛋","李四","","","","","","","","","","","","","",""],
+				// 	["王五","","王五","","","","","","","","","","","","",""],
+				// 	["","","","","","","","","","","","","","","",""],
+				// 	["","","","","","","","","","","","","","","",""],
+				// 	["","","","","","","","","","","","","","","",""],
+				// 	["","","","","","","","","","","","","","","",""],
+				// 	["","","","","","","","","","","","","","","",""],
+				// ],
+				timetables:[],
+				// available: [
+				// 	"true","true","false","false","false","false","false","false","false","false","false","false","false","false","false","false",
+				// 	"true","false","true","false","false","false","false","false","false","false","false","false","false","false","false","false",
+				// 	"false","false","false","false","false","false","false","false","false","false","false","false","false","false","false","false",
+				// 	"false","false","false","false","false","false","false","false","false","false","false","false","false","false","false","false",
+				// 	"false","false","false","false","false","false","false","false","false","false","false","false","false","false","false","false",
+				// 	"false","false","false","false","false","false","false","false","false","false","false","false","false","false","false","false",
+				// 	"false","false","false","false","false","false","false","false","false","false","false","false","false","false","false","false",
+				// ],
+				available:[],
 				array: [{
 						name: '第一周'
 					}, {
@@ -92,8 +110,8 @@
 		},
 		methods: {
 			bindPickerChange: function(e) {
-				this.week_index = e.detail.value;
-				this.update_page(e.detail.value+1)
+				this.week_index = parseInt(e.detail.value)
+				this.update_page(parseInt(e.detail.value)+1)
 
 			},
 			update_page: function(week) {
@@ -105,7 +123,7 @@
 					},
 					success: res => {
 						this.timetables = res.data
-						console.log(res.data)
+						// console.log(res.data)
 					},
 
 					fail: (e) => {
@@ -113,7 +131,7 @@
 					},
 					complete: () => {}
 				});
-				console.log("update")
+				
 				uni.request({
 					url: getApp().globalData.url+'api/main/get-by-week3',
 					method: 'GET',
@@ -122,12 +140,13 @@
 					},
 					success: res => {
 						this.available = res.data
-						console.log(res.data)
+						// console.log(res.data)
 					},
 					fail: (e) => {
 						console.log("getMachineNum fail:" + JSON.stringify(e));
 					},
-					complete: () => {}
+					complete: () => {
+					}
 				});
 			
 			}

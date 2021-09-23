@@ -6,10 +6,10 @@
 					<!-- #ifdef H5 -->
 					<uni-th width="15" align="center">头像</uni-th>
 					<!-- #endif -->
-					<uni-th width="5" align="center">姓名</uni-th>
-					<uni-th width="5" align="center">专业</uni-th>
+					<uni-th width="10" align="center">姓名</uni-th>
+					<uni-th width="10" align="center">专业</uni-th>
 					<uni-th width="10" align="center">擅长领域</uni-th>
-					<uni-th width="50" align="center">简介</uni-th>
+					<uni-th width="40" align="center">简介</uni-th>
 					<uni-th width="5" align="center">状态</uni-th>
 					<uni-th width="10" align="center">预约</uni-th>
 				</uni-tr>
@@ -59,6 +59,7 @@
 		},
 		onLoad: function(option) {
 			this.week = parseInt(option.week)
+			console.log(this.week)
 			this.day = parseInt(option.day) + 1
 			this.time = parseInt(option.time)
 			uni.request({
@@ -145,9 +146,9 @@
 	/* #ifdef H5 */
 	.uni-container {
 		margin-top: 5%;
-		width: 70%;
-		margin-left: 15%;
-		margin-right: 15%;
+		width: 90%;
+		margin-left: 5%;
+		margin-right: 5%;
 	}
 	/* #endif */
 	

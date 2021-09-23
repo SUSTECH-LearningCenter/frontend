@@ -242,7 +242,7 @@ var _default2 =
   methods: {
     handleCourseClick: function handleCourseClick(course, weekIndex, courseIndex) {
       var data = {
-        index: courseIndex + 1,
+        index: parseInt(courseIndex) + 1,
         length: course.length,
         week: this.week[weekIndex],
         weekIndex: weekIndex,

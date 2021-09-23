@@ -2,7 +2,7 @@
 	<view class="content">
 		<view class="part1">
 			<view class="title">
-				学业咨询预约系统
+				一对一学业咨询预约系统
 			</view>
 			<view class="square">
 				<view class="system">
@@ -102,7 +102,7 @@
 				flex-direction: column;
 				align-items: center;
 				.system {
-					margin-top: 5%;
+					margin-top: 20%;
 					font-size: 40rpx;
 					text-align: center;
 				}

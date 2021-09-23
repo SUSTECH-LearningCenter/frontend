@@ -223,6 +223,7 @@ var _default =
   },
   onLoad: function onLoad(option) {var _this = this;
     this.week = parseInt(option.week);
+    console.log(this.week);
     this.day = parseInt(option.day) + 1;
     this.time = parseInt(option.time);
     uni.request({

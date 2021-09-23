@@ -165,14 +165,32 @@ __webpack_require__.r(__webpack_exports__);
 
 {
   onShow: function onShow() {
-    this.update_page(this.week_index + 1);
+    this.update_page(parseInt(this.week_index) + 1);
   },
   components: {
     Timetable: Timetable },
 
   data: function data() {
     return {
+      // timetables: [
+      // 	["张三\n陈狗蛋","李四","","","","","","","","","","","","","",""],
+      // 	["王五","","王五","","","","","","","","","","","","",""],
+      // 	["","","","","","","","","","","","","","","",""],
+      // 	["","","","","","","","","","","","","","","",""],
+      // 	["","","","","","","","","","","","","","","",""],
+      // 	["","","","","","","","","","","","","","","",""],
+      // 	["","","","","","","","","","","","","","","",""],
+      // ],
       timetables: [],
+      // available: [
+      // 	"true","true","false","false","false","false","false","false","false","false","false","false","false","false","false","false",
+      // 	"true","false","true","false","false","false","false","false","false","false","false","false","false","false","false","false",
+      // 	"false","false","false","false","false","false","false","false","false","false","false","false","false","false","false","false",
+      // 	"false","false","false","false","false","false","false","false","false","false","false","false","false","false","false","false",
+      // 	"false","false","false","false","false","false","false","false","false","false","false","false","false","false","false","false",
+      // 	"false","false","false","false","false","false","false","false","false","false","false","false","false","false","false","false",
+      // 	"false","false","false","false","false","false","false","false","false","false","false","false","false","false","false","false",
+      // ],
       available: [],
       array: [{
         name: '第一周' },
@@ -224,8 +242,8 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     bindPickerChange: function bindPickerChange(e) {
-      this.week_index = e.detail.value;
-      this.update_page(e.detail.value + 1);
+      this.week_index = parseInt(e.detail.value);
+      this.update_page(parseInt(e.detail.value) + 1);
 
     },
     update_page: function update_page(week) {var _this = this;
@@ -237,7 +255,7 @@ __webpack_require__.r(__webpack_exports__);
 
         success: function success(res) {
           _this.timetables = res.data;
-          console.log(res.data);
+          // console.log(res.data)
         },
 
         fail: function fail(e) {
@@ -245,7 +263,7 @@ __webpack_require__.r(__webpack_exports__);
         },
         complete: function complete() {} });
 
-      console.log("update");
+
       uni.request({
         url: getApp().globalData.url + 'api/main/get-by-week3',
         method: 'GET',
@@ -254,12 +272,13 @@ __webpack_require__.r(__webpack_exports__);
 
         success: function success(res) {
           _this.available = res.data;
-          console.log(res.data);
+          // console.log(res.data)
         },
         fail: function fail(e) {
           console.log("getMachineNum fail:" + JSON.stringify(e));
         },
-        complete: function complete() {} });
+        complete: function complete() {
+        } });
 
 
     } } };exports.default = _default;

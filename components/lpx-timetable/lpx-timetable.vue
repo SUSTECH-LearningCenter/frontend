@@ -126,7 +126,7 @@
     methods: {
       handleCourseClick (course, weekIndex, courseIndex) {
         const data = {
-          index: courseIndex + 1,
+          index:  parseInt(courseIndex) + 1,
           length: course.length,
           week: this.week[weekIndex],
           weekIndex: weekIndex,

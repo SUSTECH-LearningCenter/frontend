@@ -1,7 +1,7 @@
 <script>
 	export default {
 		globalData:{
-			url:"http://loregit.com:1000/",
+			url:"http://loregit.com:1000/"
 		},
 		onLaunch: function() {
 			let standard_time = "2021/09/13 12:09:00"

@@ -44,7 +44,7 @@
 		display: flex;
 		flex-direction: column;
 		/* align-items: center; */
-		/* justify-content: center; */
+		justify-content: center;
 		width: 100%;
 		height: 100%;
 		background-image: url('~@/static/background.jpg');
@@ -74,7 +74,7 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		font-size: 50rpx;
+		font-size: 80rpx;
 		margin-bottom: 100rpx;
 		margin-top: 50rpx;
 		text-align: center;

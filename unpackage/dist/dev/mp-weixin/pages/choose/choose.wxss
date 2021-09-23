@@ -78,7 +78,7 @@ page {
           align-items: center;
 }
 .content .part1 .square .system {
-  margin-top: 5%;
+  margin-top: 20%;
   font-size: 40rpx;
   text-align: center;
 }

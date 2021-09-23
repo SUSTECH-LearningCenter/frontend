@@ -62,7 +62,7 @@
 			this.day = parseInt(option.day) + 1
 			this.time = parseInt(option.time)
 			uni.request({
-				url: 'http://learningcenter.sustech.edu.cn:1000/api/main/get-by-square',
+				url: getApp().globalData.url+'api/main/get-by-square',
 				method: 'GET',
 				data: {
 					"weekId": this.week,
@@ -100,7 +100,7 @@
 			},
 			find_data: function(i) {
 				uni.request({
-					url: 'http://learningcenter.sustech.edu.cn:1000/api/main/tutor',
+					url: getApp().globalData.url+'api/main/tutor',
 					method: 'GET',
 					data: {
 						"SID": this.information[i].advisorId,

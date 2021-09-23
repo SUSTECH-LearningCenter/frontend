@@ -131,7 +131,7 @@
 			            this.$refs.form.validate().then(first_res=>{
 			                console.log('表单数据信息：'+first_res);
 							uni.request({
-							        url: 'http://learningcenter.sustech.edu.cn:1000/api/reserve/post-2',
+							        url: getApp().globalData.url+'api/reserve/post-2',
 							        method: 'POST',
 							        data: {
 							            "advisorName": first_res.name,

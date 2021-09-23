@@ -15,7 +15,7 @@
       <view class="course-container">
         <view class="week" v-for="(week, weekIndex) in courseData" :key="weekIndex">
           <view class="courseList" v-for="(course, courseIndex) in week" :key="courseIndex">
-            <view @click="handleCourseClick(course, weekIndex, courseIndex)" class="course" :style="{ height: (course.length * 80) + 'px', background: course.backgroundColor }" v-if="course.length > 0">{{ course.name }}</view>
+            <view @click="handleCourseClick(course, weekIndex, courseIndex)" class="course" :style="{ height: (course.length * 85) + 'px', background: course.backgroundColor }" v-if="course.length > 0">{{ course.name }}</view>
           </view>
         </view>
       </view>
@@ -173,7 +173,7 @@
   .main{
     position: relative;
     .row{
-      height: 80px;
+      height: 85px;
       position: relative;
       &:after{
         content: '';
@@ -204,7 +204,8 @@
       top: 0;
       left: 88rpx;
       width: calc(100% - 88rpx);
-      height: 100%;
+      // height: 100%;
+	  height: 1500px;
       display: flex;
 
       .week{
@@ -218,9 +219,10 @@
           word-break: break-all;
           color: white;
           overflow: hidden;
+		  height: 85px;
 
           .course{
-            padding: 8rpx;
+			margin: 10%;
             border-radius: 16rpx;
             text-align: center;
           }

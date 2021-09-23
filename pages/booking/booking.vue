@@ -33,7 +33,7 @@
 	import Timetable from '@/components/lpx-timetable/lpx-timetable.vue'
 	export default {
 		onShow: function() {
-			this.update_page(1)
+			this.update_page(this.week_index+1)
 		},
 		components: {
 			Timetable
@@ -87,7 +87,7 @@
 						name: '第二十周'
 					}
 				],
-				week_index: 0,
+				week_index: 0
 			}
 		},
 		methods: {
@@ -113,7 +113,7 @@
 					},
 					complete: () => {}
 				});
-				
+				console.log("update")
 				uni.request({
 					url: getApp().globalData.url+'api/main/get-by-week3',
 					method: 'GET',

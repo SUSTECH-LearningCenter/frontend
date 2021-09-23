@@ -165,7 +165,7 @@ __webpack_require__.r(__webpack_exports__);
 
 {
   onShow: function onShow() {
-    this.update_page(1);
+    this.update_page(this.week_index + 1);
   },
   components: {
     Timetable: Timetable },
@@ -230,7 +230,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     update_page: function update_page(week) {var _this = this;
       uni.request({
-        url: 'http://learningcenter.sustech.edu.cn:1000/api/main/get-by-week2',
+        url: getApp().globalData.url + 'api/main/get-by-week2',
         method: 'GET',
         data: {
           "weekId": week },
@@ -245,9 +245,9 @@ __webpack_require__.r(__webpack_exports__);
         },
         complete: function complete() {} });
 
-
+      console.log("update");
       uni.request({
-        url: 'http://learningcenter.sustech.edu.cn:1000/api/main/get-by-week3',
+        url: getApp().globalData.url + 'api/main/get-by-week3',
         method: 'GET',
         data: {
           "weekId": week },

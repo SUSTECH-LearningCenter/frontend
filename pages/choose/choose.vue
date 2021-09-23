@@ -17,7 +17,9 @@
 			</view>
 		</view>
 		<view class="part2">
-			<view class="bottom_info">南方科技大学学生工作部学生学习中心</view>
+			<view class="bottom_info">
+				<text>@2021南方科技大学学生工作部学生学习中心\n如有建议请联系learningc@sustech.edu.cn</text>
+			</view>
 		</view>
 	</view>
 </template>
@@ -71,7 +73,8 @@
 		align-items: center;
 		
 		.part1 {
-			background-color: #9300dd;
+			// background-color: #9300dd;
+			background-color: #ff5500;
 			width: 100%;
 			height: 80%;
 			

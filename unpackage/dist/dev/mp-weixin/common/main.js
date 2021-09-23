@@ -88,6 +88,9 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default =
 {
+  globalData: {
+    url: "http://loregit.com:1000/" },
+
   onLaunch: function onLaunch() {
     var standard_time = "2021/09/13 12:09:00";
     var nowTime = new Date().getTime();

@@ -80,7 +80,7 @@
 			},
 			getCode: function() {
 				uni.request({
-					url: 'http://learningcenter.sustech.edu.cn:1000/api/reserve/send-code',
+					url: getApp().globalData.url+'api/reserve/send-code',
 					method: 'GET',
 					data: {
 						"SID":this.inputID,
@@ -101,7 +101,7 @@
 			},
 			getRecord: function() {
 				uni.request({
-					url: 'http://learningcenter.sustech.edu.cn:1000/api/reserve/find-my',
+					url: getApp().globalData.url+'api/reserve/find-my',
 					method: 'GET',
 					data: {
 						"type":0,

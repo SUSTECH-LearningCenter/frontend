@@ -95,7 +95,7 @@
 				this.$refs.form.validate().then(first_res => {
 					console.log('表单数据信息：' + first_res);
 					uni.request({
-						url: 'http://learningcenter.sustech.edu.cn:1000/api/reserve/create?id='+this.tutorID,
+						url: getApp().globalData.url + 'api/reserve/create?id='+this.tutorID,
 						method: 'POST',
 						data: {
 							"code": first_res.code,
@@ -126,7 +126,7 @@
 			},
 			getCode: function() {
 				uni.request({
-					url: 'http://learningcenter.sustech.edu.cn:1000/api/reserve/send-code',
+					url: getApp().globalData.url+'api/reserve/send-code',
 					method: 'GET',
 					data: {
 						"SID": this.baseFormData.id,

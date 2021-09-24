@@ -237,7 +237,7 @@ __webpack_require__.r(__webpack_exports__);
         name: '第二十周' }],
 
 
-      week_index: 0 };
+      week_index: 2 };
 
   },
   methods: {

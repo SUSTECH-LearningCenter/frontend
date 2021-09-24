@@ -105,7 +105,7 @@
 						name: '第二十周'
 					}
 				],
-				week_index: 0
+				week_index: 2
 			}
 		},
 		methods: {
@@ -160,6 +160,7 @@
 		height: 100%;
 		/* #ifdef H5 */
 		background-image: url('~@/static/background.jpg');
+		background-size: cover;
 		/* #endif */
 	}
 	

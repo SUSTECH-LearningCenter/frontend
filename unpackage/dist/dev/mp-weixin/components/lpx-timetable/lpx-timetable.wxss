@@ -120,6 +120,6 @@
   margin: 10%;
   border-radius: 16rpx;
   text-align: center;
-  font-size: 2%;
+  font-size: xx-small;
 }
 

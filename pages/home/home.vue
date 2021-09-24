@@ -59,6 +59,7 @@
 		width: 100%;
 		height: 100%;
 		background-image: url('~@/static/background.jpg');
+		background-size: cover;
 	}
 	
 	.logo {
@@ -174,14 +175,13 @@
 	.wx_button {
 		width: 28%;
 		height:3%;
-		background-color: #00a000;
 		border: #ffffff solid;
 		border-radius: 40%;
 		margin-bottom: 5%;
 		.my_button {
 			background-color: #00a000;
 			color: #ffffff;
-			font-size: 35%;
+			font-size: xx-small;
 		}
 	}
 	/* #endif */

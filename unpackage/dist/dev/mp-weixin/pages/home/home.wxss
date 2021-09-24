@@ -106,7 +106,6 @@ page {
 .wx_button {
   width: 28%;
   height: 3%;
-  background-color: #00a000;
   border: #ffffff solid;
   border-radius: 40%;
   margin-bottom: 5%;
@@ -114,6 +113,6 @@ page {
 .wx_button .my_button {
   background-color: #00a000;
   color: #ffffff;
-  font-size: 35%;
+  font-size: xx-small;
 }
 

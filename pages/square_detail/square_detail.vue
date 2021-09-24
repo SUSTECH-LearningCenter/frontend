@@ -1,45 +1,48 @@
 <template>
 	<view class="container">
-		<view class="uni-container">
-			<uni-table ref="table" :loading="loading" border stripe emptyText="暂无更多数据">
-				<uni-tr>
-					<!-- #ifdef H5 -->
-					<uni-th width="15" align="center">头像</uni-th>
-					<!-- #endif -->
-					<uni-th width="10" align="center">姓名</uni-th>
-					<uni-th width="10" align="center">专业</uni-th>
-					<uni-th width="10" align="center">擅长领域</uni-th>
-					<uni-th width="40" align="center">简介</uni-th>
-					<uni-th width="5" align="center">状态</uni-th>
-					<uni-th width="10" align="center">预约</uni-th>
-				</uni-tr>
-				<uni-tr height="100" v-for="(item, index) in information" :key="index">
-					<!-- #ifdef H5 -->
-					<uni-td align="center" height="100">
-						<image :src="item.more.avatar" mode="scaleToFill" style="width: 100%;height: 100%;"></image>
-					</uni-td>
-					<!-- #endif -->
-					<uni-td align="center">{{ item.advisorName }}</uni-td>
-					<uni-td align="center">{{ item.more.prof }}</uni-td>
-					<uni-td align="center"> {{ item.more.prefer }}</uni-td>
-					<uni-td align="center">{{ item.more.intro }}</uni-td>
-					<uni-td v-if="item.status==='registering'">
-						可预约
-					</uni-td>
-					<uni-td v-else>
-						已预约
-					</uni-td>
-					<uni-td>
-						<view v-if="item.status==='registering'">
-							<view class="uni-group">
-								<button class="uni-button" style="background-color: #003e00; color: white;" size="mini" type="primary" @click="book(item.id)">预约</button>
-							</view>
-						</view>
-						<view v-else></view>
-					</uni-td>
-				</uni-tr>
-			</uni-table>
-		</view>
+		<scroll-view class="list"scroll-y="true" enable-flex="true">
+			<view class="item"v-for="(item,index) in information">
+				<!-- #ifdef MP-WEIXIN -->
+				<view class="image-container">
+					<image class="image" src="../../static/background.jpg" mode="scaleToFill"></image>
+				</view>
+				<view class="info-container">
+					<view class="name-good">
+						<view class="name">{{item.advisorName}}</view>						
+						<view class="prof">专业：{{item.more.prof}}</view>
+					</view>
+					<view class="good">擅长：{{item.more.prefer}}</view>
+					<view class="detail">{{item.more.intro}}</view>
+					<view class="other">
+						<block  v-if="item.status=='registering'">
+						    <text class="text" style="color: #2087B2;">可预约</text>
+						</block>
+						<block v-else>
+							<text class="text" style="color: #DD524D;">不可预约</text>
+						</block>
+						<button class="book" @click="book(item.advisorId)">预约</button>
+					</view>
+				</view>
+				<!-- #endif -->
+				<!-- #ifdef H5 -->
+				<view class="image-container">
+					<image class="image" src="../../static/background.jpg" mode="scaleToFill"></image>
+				</view>
+				<view class="info-container">
+					<view class="name-good">
+						<view class="name-button">
+							<view class="name">{{item.advisorName}}</view>
+							<button class="book" @click="book(item.advisorId)">预约</button>
+						</view>						
+						<view class="good">擅长：{{item.more.prefer}}</view>
+					</view>
+					<view class="prof">专业：{{item.more.prof}}</view>
+					<view class="detail">{{item.more.intro}}</view>
+				</view>
+				<!-- #endif -->
+			</view>
+		</scroll-view>
+	</view>
 	</view>
 </template>
 
@@ -108,6 +111,7 @@
 					},
 					success: res => {
 						this.information[i].more = res.data
+						console.log(this.information)
 					},
 					fail: (e) => {
 						console.log("getMachineNum fail:" + JSON.stringify(e));
@@ -137,30 +141,201 @@
 		/* #endif */
 	}
 
-	
 	.container {
 		width: 100%;
-		height: 100%;		
+		height: 100%;
 	}
 	
-	/* #ifdef H5 */
-	.uni-container {
-		margin-top: 5%;
-		width: 90%;
-		margin-left: 5%;
-		margin-right: 5%;
-	}
-	/* #endif */
-	
-	/* #ifdef MP-WEIXIN */
-	.uni-container {
-		margin-top: 5%;
+	.list {
 		width: 100%;
+		height: 100%;
 	}
-	/* #endif */
 	
-	.uni-group {
+	.item {
+		width: 100%;
+		height: 500rpx;
 		display: flex;
-		align-items: center;
+		flex-direction: row;
+		background-color: white;
+		border-bottom: #888888 solid;
 	}
+	.image-container {
+		width: 20%;
+		height: 100%;
+		display: flex;
+		flex-direction: row;
+	}
+	.image {
+		margin-top: 5%;
+		width: 60%;
+		height: 20%;
+		margin-left: 20%;
+		border-radius: 50%;
+	}
+	
+	.info-container {
+		width: 80%;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+	}
+	.name-good {
+		width: 100%;
+		height: 20%;
+		display: flex;
+		flex-direction: row;
+		border-bottom: #b3b3b3 solid;
+	}
+	.name {
+		width: 30%;
+		height: 100%;
+		font-size: 30rpx;
+		/* color: #636363; */
+		color: #2C405A;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+	.prof {
+		width: 70%;
+		height: 100%;
+		color: #8c8c8c;
+		font-size: smaller;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+	.good {
+		width: 100%;		
+		height: 20%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		color: #8c8c8c;
+		font-size: smaller;
+	}
+	.detail {
+		width: 100%;
+		height: 40%;
+		margin-top: 1%;
+		color: #7a7a7a;
+		font-size: smaller;
+	}
+	.other {
+		width: 100%;
+		height: 20%;
+		display: flex;
+		flex-direction: row;
+	}
+	.text {
+		width: 80%;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		font-size: smaller;
+	}
+	.book {
+		width: 20%;
+		height: 50%;
+		margin-top: 5%;
+		font-size: small;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		background-color: #2087b2;
+		color: white;
+	}
+	
+	/*#ifdef H5*/
+	.list {
+		width: 80%;
+		height: 100%;
+		margin-left: 10%;
+		margin-right: 10%;
+	}
+	
+	.item {
+		width: 100%;
+		height: 500rpx;
+		display: flex;
+		flex-direction: row;
+		background-color: white;
+		border-bottom: #888888 solid;
+	}
+	.image-container {
+		width: 30%;
+		height: 100%;
+		display: flex;
+		flex-direction: row;
+	}
+	.image {
+		margin-top: 5%;
+		width: 60%;
+		height: 70%;
+		margin-left: 20%;
+		border-radius: 50%;
+	}
+	
+	.info-container {
+		width: 70%;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+	}
+	.name-good {
+		width: 100%;
+		height: 50%;
+		display: flex;
+		flex-direction: column;
+	}
+	.name-button {
+		width: 100%;
+		height: 30%;
+		display: flex;
+		flex-direction: row;
+	}
+	.name {
+		width: 70%;
+		height: 100%;
+		font-size: 80rpx;
+		color: #636363;
+	}
+	.book {
+		width: 10%;
+		height: 70%;
+		font-size: small;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-self: center;
+		background-color: #2087b2;
+		color: white;
+	}
+	.good {
+		width: 100%;		
+		height: 66%;
+		margin-top: 2%;
+		margin-bottom: 2%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		border-bottom: #b3b3b3 solid;
+		color: #8c8c8c;
+	}
+	.prof {
+		width: 100%;
+		height: 10%;
+		color: #8c8c8c;
+	}
+	.detail {
+		width: 100%;
+		height: 40%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		color: #7a7a7a;
+	}
+	/*#endif*/
+	
 </style>

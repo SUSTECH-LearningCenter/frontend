@@ -92,10 +92,6 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
     url: "http://loregit.com:1000/" },
 
   onLaunch: function onLaunch() {
-    var standard_time = "2021/09/13 12:09:00";
-    var nowTime = new Date().getTime();
-    var preTime = new Date(standard_time).getTime();
-    console.log(nowTime - preTime);
   },
   onShow: function onShow() {
 

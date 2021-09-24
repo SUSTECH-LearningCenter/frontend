@@ -157,6 +157,7 @@
 		height: 100%;
 		/* #ifdef H5 */
 		background-image: url('~@/static/background.jpg');
+		background-size: cover;
 		/* #endif */
 	}
 	

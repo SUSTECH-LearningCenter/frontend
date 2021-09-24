@@ -139,6 +139,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 var _default2 =
 {
   name: 'Timetable',
@@ -146,22 +149,66 @@ var _default2 =
     timetableType: {
       type: Array,
       default: function _default() {
-        return [
-        { index: '1', name: '09:00\n10:00' },
-        { index: '2', name: '10:00\n11:00' },
-        { index: '3', name: '11:00\n12:00' },
-        { index: '4', name: '12:00\n13:00' },
-        { index: '5', name: '13:00\n14:00' },
-        { index: '6', name: '14:00\n15:00' },
-        { index: '7', name: '15:00\n16:00' },
-        { index: '8', name: '16:00\n17:00' },
-        { index: '9', name: '17:00\n18:00' },
-        { index: '10', name: '18:00\n19:00' },
-        { index: '11', name: '19:00\n20:00' },
-        { index: '12', name: '20:00\n21:00' },
-        { index: '13', name: '21:00\n22:00' },
-        { index: '14', name: '22:00\n23:00' },
-        { index: '15', name: '23:00\n24:00' }];
+        return [{
+          index: '1',
+          name: '09:00\n10:00' },
+
+        {
+          index: '2',
+          name: '10:00\n11:00' },
+
+        {
+          index: '3',
+          name: '11:00\n12:00' },
+
+        {
+          index: '4',
+          name: '12:00\n13:00' },
+
+        {
+          index: '5',
+          name: '13:00\n14:00' },
+
+        {
+          index: '6',
+          name: '14:00\n15:00' },
+
+        {
+          index: '7',
+          name: '15:00\n16:00' },
+
+        {
+          index: '8',
+          name: '16:00\n17:00' },
+
+        {
+          index: '9',
+          name: '17:00\n18:00' },
+
+        {
+          index: '10',
+          name: '18:00\n19:00' },
+
+        {
+          index: '11',
+          name: '19:00\n20:00' },
+
+        {
+          index: '12',
+          name: '20:00\n21:00' },
+
+        {
+          index: '13',
+          name: '21:00\n22:00' },
+
+        {
+          index: '14',
+          name: '22:00\n23:00' },
+
+        {
+          index: '15',
+          name: '23:00\n24:00' }];
+
 
       } },
 
@@ -214,9 +261,17 @@ var _default2 =
         list.forEach(function (item, index) {
           var my_color = getBackgroundColor(i * 16 + index);
           if (!index) {
-            return listMerge[i].push({ name: item, length: 1, backgroundColor: item === '' ? 'none' : my_color });
+            return listMerge[i].push({
+              name: item,
+              length: 1,
+              backgroundColor: item === '' ? 'none' : my_color });
+
           } else {
-            return listMerge[i].push({ name: item, length: 1, backgroundColor: item === '' ? 'none' : my_color });
+            return listMerge[i].push({
+              name: item,
+              length: 1,
+              backgroundColor: item === '' ? 'none' : my_color });
+
           }
 
           // if (item === (listMerge[i][index - 1] || {}).name && item) {
@@ -254,7 +309,8 @@ var _default2 =
       if (this.available[weekIndex * 16 + courseIndex]) {
         console.log("weeK" + this.week_index + "day" + weekIndex + "time：" + courseIndex);
         uni.navigateTo({
-          url: '../../pages/square_detail/square_detail?week=' + this.week_index + "&day=" + weekIndex + "&time=" + courseIndex });
+          url: '../../pages/square_detail/square_detail?week=' + this.week_index + "&day=" +
+          weekIndex + "&time=" + courseIndex });
 
       } else {
         uni.showToast({

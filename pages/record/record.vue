@@ -1,7 +1,8 @@
 <template>
 	<view class="content">
+		<text class="text">请先登录!</text>
 		<view class="head">
-			<text class="text">请先登录!</text>
+			
 			<view class="uni-form-item">
 				<input class="input" @input="onKeyInput" placeholder="请输入学号" />
 				<button class="uni-button" size="mini" type="primary" @click="getCode">获取</button>
@@ -148,6 +149,7 @@
 		height: 100%;
 		/* #ifdef H5 */
 		background-image: url('~@/static/background.jpg');
+		background-size: cover;
 		/* #endif */
 	}
 
@@ -180,6 +182,7 @@
 		background-color: rgba(255,255,255,0.9);
 		border-radius: 5%/10%;
 		height: auto;
+		width: 60%;
 	}
 	
 	.uni-group {
@@ -198,6 +201,7 @@
 	}
 	
 	.uni-form-item {
+		width: 100%;
 		display: flex;
 		margin-left: auto;
 	}

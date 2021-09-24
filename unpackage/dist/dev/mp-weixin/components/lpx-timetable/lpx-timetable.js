@@ -215,18 +215,21 @@ var _default2 =
           var my_color = getBackgroundColor(i * 16 + index);
           if (!index) {
             return listMerge[i].push({ name: item, length: 1, backgroundColor: item === '' ? 'none' : my_color });
-          }
-          if (item === (listMerge[i][index - 1] || {}).name && item) {
-            var sameIndex = (listMerge[i][index - 1] || {}).sameIndex;
-            if (sameIndex || sameIndex === 0) {
-              listMerge[i][sameIndex].length++;
-              return listMerge[i].push({ name: item, length: 0, sameIndex: sameIndex });
-            }
-            listMerge[i][index - 1].length++;
-            return listMerge[i].push({ name: item, length: 0, sameIndex: index - 1 });
           } else {
             return listMerge[i].push({ name: item, length: 1, backgroundColor: item === '' ? 'none' : my_color });
           }
+
+          // if (item === (listMerge[i][index - 1] || {}).name && item) {
+          //   const sameIndex = (listMerge[i][index - 1] || {}).sameIndex
+          //   if (sameIndex || sameIndex === 0) {
+          //     listMerge[i][sameIndex].length++
+          //     return listMerge[i].push({ name: item, length: 0, sameIndex: sameIndex })
+          //   }
+          //   listMerge[i][index - 1].length++
+          //   return listMerge[i].push({ name: item, length: 0, sameIndex: index - 1 })
+          // } else {
+          //   return listMerge[i].push({ name: item, length: 1, backgroundColor: item === '' ? 'none' : my_color })
+          // }
         });
       });
       return listMerge;

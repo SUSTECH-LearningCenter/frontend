@@ -74,7 +74,9 @@
 		
 		.part1 {
 			// background-color: #9300dd;
-			background-color: #ff5500;
+			background-color: #dd4200;
+			// background-color: #b83a00;
+			
 			width: 100%;
 			height: 80%;
 			

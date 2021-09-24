@@ -99,18 +99,21 @@
 					  const my_color = getBackgroundColor(i*16+index)
                     if (!index) {
                       return listMerge[i].push({ name: item, length: 1, backgroundColor: item === '' ? 'none' : my_color })
-                    }
-                    if (item === (listMerge[i][index - 1] || {}).name && item) {
-                      const sameIndex = (listMerge[i][index - 1] || {}).sameIndex
-                      if (sameIndex || sameIndex === 0) {
-                        listMerge[i][sameIndex].length++
-                        return listMerge[i].push({ name: item, length: 0, sameIndex: sameIndex })
-                      }
-                      listMerge[i][index - 1].length++
-                      return listMerge[i].push({ name: item, length: 0, sameIndex: index - 1 })
-                    } else {
-                      return listMerge[i].push({ name: item, length: 1, backgroundColor: item === '' ? 'none' : my_color })
-                    }
+                    }else{
+						return listMerge[i].push({ name: item, length: 1, backgroundColor: item === '' ? 'none' : my_color })
+					}
+					
+                    // if (item === (listMerge[i][index - 1] || {}).name && item) {
+                    //   const sameIndex = (listMerge[i][index - 1] || {}).sameIndex
+                    //   if (sameIndex || sameIndex === 0) {
+                    //     listMerge[i][sameIndex].length++
+                    //     return listMerge[i].push({ name: item, length: 0, sameIndex: sameIndex })
+                    //   }
+                    //   listMerge[i][index - 1].length++
+                    //   return listMerge[i].push({ name: item, length: 0, sameIndex: index - 1 })
+                    // } else {
+                    //   return listMerge[i].push({ name: item, length: 1, backgroundColor: item === '' ? 'none' : my_color })
+                    // }
                   })
                 })
                 return listMerge
@@ -222,9 +225,18 @@
 		  height: 85px;
 
           .course{
+			  display: flex;
+			  flex-direction: column;
+			  justify-content: center;
+			  align-content: center;
 			margin: 10%;
             border-radius: 16rpx;
             text-align: center;
+			/* #ifdef MP-WEIXIN */
+			font-size: 2%;
+			/* #endif */
+			
+			
           }
         }
       }

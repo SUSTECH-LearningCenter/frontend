@@ -93,7 +93,7 @@
 		"borderStyle": "black",
 		"backgroundColor": "#F8F8F8",
 		"list": [{
-				"pagePath": "pages/home/home",
+				"pagePath" : "pages/home/home",
 				"iconPath": "static/home_off.png",
 				"selectedIconPath": "static/home_on.png",
 				"text": "首页"

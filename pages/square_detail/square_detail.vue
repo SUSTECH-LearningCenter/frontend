@@ -4,7 +4,7 @@
 			<view class="item"v-for="(item,index) in information">
 				<!-- #ifdef MP-WEIXIN -->
 				<view class="image-container">
-					<image class="image" src="~@/static/background.jpg" mode="scaleToFill"></image>
+					<image class="image" :src="item.more.avatar" mode="scaleToFill"></image>
 				</view>
 				<view class="info-container">
 					<view class="name-good">
@@ -26,7 +26,7 @@
 				<!-- #endif -->
 				<!-- #ifdef H5 -->
 				<view class="image-container">
-					<image class="image" src="../../static/background.jpg" mode="scaleToFill"></image>
+					<image class="image" :src="item.more.avatar" mode="scaleToFill"></image>
 				</view>
 				<view class="info-container">
 					<view class="name-good">

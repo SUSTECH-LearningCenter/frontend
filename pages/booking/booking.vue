@@ -105,7 +105,7 @@
 						name: '第二十周'
 					}
 				],
-				week_index: 3
+				week_index: 4
 			}
 		},
 		methods: {

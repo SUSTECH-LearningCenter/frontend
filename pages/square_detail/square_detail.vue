@@ -4,7 +4,7 @@
 			<view class="item"v-for="(item,index) in information">
 				<!-- #ifdef MP-WEIXIN -->
 				<view class="image-container">
-					<image class="image" src="../../static/background.jpg" mode="scaleToFill"></image>
+					<image class="image" src="~@/static/background.jpg" mode="scaleToFill"></image>
 				</view>
 				<view class="info-container">
 					<view class="name-good">
@@ -160,7 +160,7 @@
 		border-bottom: #888888 solid;
 	}
 	.image-container {
-		width: 20%;
+		width: 30%;
 		height: 100%;
 		display: flex;
 		flex-direction: row;

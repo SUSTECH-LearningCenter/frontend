@@ -1,0 +1,46 @@
+{
+  "pages": [
+    "pages/choose/choose",
+    "pages/home/home",
+    "pages/booking/booking",
+    "pages/record/record",
+    "pages/admin/admin",
+    "pages/square_detail/square_detail",
+    "pages/booking_detail/booking_detail"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTitleText": "uni-app",
+    "backgroundColor": "#F8F8F8",
+    "navigationStyle": "default",
+    "navigationBarTextStyle": "white",
+    "navigationBarBackgroundColor": "#000000"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#aa0000",
+    "borderStyle": "black",
+    "backgroundColor": "#F8F8F8",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "iconPath": "static/home_off.png",
+        "selectedIconPath": "static/home_on.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/booking/booking",
+        "iconPath": "static/timetable_off.png",
+        "selectedIconPath": "static/timetable_on.png",
+        "text": "我要预约"
+      },
+      {
+        "pagePath": "pages/record/record",
+        "iconPath": "static/record_off.png",
+        "selectedIconPath": "static/record_on.png",
+        "text": "个人中心"
+      }
+    ]
+  },
+  "usingComponents": {}
+}

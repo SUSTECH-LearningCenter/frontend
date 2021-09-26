@@ -13,7 +13,11 @@ page {
 }
 .text {
 	font-weight: 600;
-	color: #ff55ff;
+	color: #00b82e;
+	margin-left: 40%;
+	-webkit-box-align:center;
+	-webkit-align-items:center;
+	        align-items:center;
 }
 .input {
 	background-color: rgba(255,255,255,0.9);

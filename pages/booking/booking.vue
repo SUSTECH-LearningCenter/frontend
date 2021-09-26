@@ -105,7 +105,7 @@
 						name: '第二十周'
 					}
 				],
-				week_index: 2
+				week_index: 3
 			}
 		},
 		methods: {
@@ -115,6 +115,7 @@
 
 			},
 			update_page: function(week) {
+				console.log(this.week_index)
 				uni.request({
 					url: getApp().globalData.url+'api/main/get-by-week2',
 					method: 'GET',
@@ -123,7 +124,8 @@
 					},
 					success: res => {
 						this.timetables = res.data
-						// console.log(res.data)
+						console.log(res.data)
+						
 					},
 
 					fail: (e) => {
@@ -140,7 +142,7 @@
 					},
 					success: res => {
 						this.available = res.data
-						// console.log(res.data)
+						console.log(res.data)
 					},
 					fail: (e) => {
 						console.log("getMachineNum fail:" + JSON.stringify(e));

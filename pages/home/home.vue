@@ -1,6 +1,7 @@
 <template>
 
 	<view class="content" >
+		
 		<!-- <image class="logo" src="/static/back.png" mode="heightFix"></image> -->
 		<!-- #ifdef H5 -->
 		<view class="text_all">
@@ -14,10 +15,14 @@
 		<!-- #endif -->
 		<!-- #ifdef MP-WEIXIN -->
 		<view class = "wx_picture">
-			<image style = "width: 100%;height: 100%;"src="../../static/new_home.png" mode="scaleToFill"></image>
+			
+			<image style = "z-index: -1; width: 100%;height: 100%;"src="../../static/new_home.png" mode="scaleToFill">
+				
+			</image>
 		</view>
 		<view class="wx_button" @click="back">
-			<button type="default"class="my_button"> 返回选择界面</button>
+			<!-- <button type="default"class="my_button"> 返回选择界面</button> -->
+			<a class="backUrl"><u>导师学业咨询请返回</u></a>
 		</view>
 		<!-- #endif -->
 	</view>
@@ -100,11 +105,11 @@
 		font-size: 40rpx;
 	}
 	.wx_button {
-		margin-top: 10%;
-		width: 15%;
+		margin-top: 0%;
+		width: 30%;
 		height:10%;
-		border-radius: 30%;
-		margin-bottom: 2%;
+		border-radius: 15%;
+		margin-bottom: 0%;
 		.my_button {
 			background-color: #1c83ae;
 			color: #ffffff;
@@ -173,16 +178,22 @@
 		height: 95%;
 	}
 	.wx_button {
-		width: 28%;
-		height:3%;
+		width: 30%;
+		height:1%;
 		border: #ffffff solid;
-		border-radius: 40%;
-		margin-bottom: 5%;
+		border-radius: 50%;
+		margin-bottom: 3%;
 		.my_button {
 			background-color: #00a000;
 			color: #ffffff;
 			font-size: xx-small;
 		}
+	}
+	.backUrl{
+		color: #a2a2a2;
+		font-size: 25rpx;
+		text-decoration: underline;
+
 	}
 	/* #endif */
 	

@@ -1,7 +1,7 @@
 <script>
 	export default {
 		globalData:{
-			url:"http://loregit.com:1000/"
+			url:"https://loregit.com:1000/"
 		},
 		onLaunch: function() {
 		},

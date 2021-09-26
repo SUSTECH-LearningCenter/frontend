@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "预约时间表",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "timetable": "/components/lpx-timetable/lpx-timetable"
+  }
+}

@@ -2,11 +2,11 @@
 	<view class="content">
 		<text class="text">请先登录!</text>
 		<view class="head">
-			
 			<view class="uni-form-item">
 				<input class="input" @input="onKeyInput" placeholder="请输入学号" />
 				<button class="uni-button" size="mini" type="primary" @click="getCode">获取</button>
 			</view>
+			</br>
 			<view class="uni-form-item">
 				<input class="input" @input="onKeyInput2" placeholder="请输入验证码" />
 				<button class="uni-button"  size="mini" type="primary" @click="getRecord">查询</button>
@@ -20,8 +20,8 @@
 			<text style ="margin-top:5%">我的预约</text>
 			<uni-table ref="table" :loading="loading" border stripe emptyText="暂无更多数据">
 				<uni-tr>
-					<uni-th width="10" align="center">周数</uni-th>
-					<uni-th width="10" align="center">星期</uni-th>
+					<uni-th width="6" align="center">周数</uni-th>
+					<uni-th width="6" align="center">星期</uni-th>
 					<uni-th width="10" align="center">开始时间</uni-th>
 					<uni-th width="10" align="center">导生姓名</uni-th>
 					<uni-th width="10" align="center">预约状态</uni-th>	
@@ -34,14 +34,15 @@
 					<uni-td align="center">{{ item.status }}</uni-td>
 				</uni-tr>
 			</uni-table>
+
 			
 			<text>我的任务</text>
 			<uni-table ref="table" :loading="loading" border stripe emptyText="暂无更多数据">
 				<uni-tr>
-					<uni-th width="10" align="center">周数</uni-th>
-					<uni-th width="10" align="center">星期</uni-th>
+					<uni-th width="6" align="center">周数</uni-th>
+					<uni-th width="6" align="center">星期</uni-th>
 					<uni-th width="10" align="center">开始时间</uni-th>
-					<uni-th width="10" align="center">预约者姓名</uni-th>
+					<uni-th width="15" align="center">预约者姓名</uni-th>
 					<uni-th width="10" align="center">预约状态</uni-th>	
 				</uni-tr>
 				<uni-tr height="100" v-for="(item, index) in information2" :key="index">
@@ -175,7 +176,9 @@
 	
 	.text {
 		font-weight: 600;
-		color: #ff55ff;
+		color: #00b82e;
+		margin-left: 40%;
+		align-items:center;
 	}
 	
 	.input {

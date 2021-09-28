@@ -2,6 +2,7 @@
 	export default {
 		globalData:{
 			url:"https://loregit.com:1000/"
+			// url:"https://learningcenter.sustech.edu.cn:1000"
 		},
 		onLaunch: function() {
 		},

@@ -2,7 +2,7 @@
 	<view class="content">
 		<view class="part1">
 			<view class="title">
-				一对一学业咨询预约系统
+				一对一学业咨询预约系统 
 			</view>
 			<view class="square">
 				<view class="system">
@@ -51,21 +51,115 @@
 </script>
 
 <style lang="scss">
+	/* #ifdef H5 */
 	page {
 		height: 100%;
 		width: 100%;
 		
 	}
 	.content {
-		/* #ifdef MP-WEIXIN */
-		width: 100%;
-		/* #endif */
 		
-		/* #ifdef H5 */
-		width: 50%;
-		margin-left: 30%;
-		margin-right: 30%;
-		/* #endif */
+		width: 100%;
+		margin-left: 0%;
+		margin-right: 10%;
+		height: 100%;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		
+		.part1 {
+			// background-color: #9300dd;
+			background-color: #dd4200;
+			// background-color: #b83a00;
+			
+			width: 100%;
+			height: 90%;
+			
+			.title {
+				color: white;
+				height: 10%;
+				width: 80%;
+				margin-left: 10%;
+				margin-right: 10%;
+				margin-top: 10%;
+				margin-bottom: 5%;
+				font-size: 50rpx;
+				text-align: center;
+			}
+			
+			.square {
+				color: white;
+				height: 40%;
+				margin-left: 10%;
+				margin-right: 10%;
+				margin-bottom: 5%;
+				border: #dd4200 solid;
+				border-radius: 10%;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				.system {
+					margin-top: 0%;
+					font-size: 40rpx;
+					text-align: center;
+				}
+				.teacher {
+					border: #ffffff solid;
+					border-radius: 5%/20%;
+					width: 80%;
+					height: 20%;
+					margin-left: 10%;
+					margin-right: 10%;
+					margin-top: 5%;
+					text-align: center;
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+				}
+				.student {
+					border: #ffffff solid;
+					border-radius: 5%/20%;
+					width: 80%;
+					height: 20%;
+					margin-left: 10%;
+					margin-right: 10%;
+					margin-top: 5%;
+					text-align: center;
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+				}
+				.bottom_info {
+					margin-top: 10%;
+					font-size: 25rpx;
+					text-align: center;
+					align-items: center;
+					color: #000000;
+					}
+			}
+		}
+		.part2 {
+			background-color: #ffffff;
+			width: 100%;
+			height: 10%;
+			.bottom_info {
+				margin-top: 0%;
+				font-size: 25rpx;
+				text-align: center;
+				color: #000000;
+			}
+		}
+	}
+	/* #endif */
+	
+	/* #ifdef MP-WEIXIN */
+	page {
+		height: 100%;
+		width: 100%;
+		
+	}
+	.content {
+		width: 100%;
 		
 		height: 100%;
 		display: flex;
@@ -148,4 +242,5 @@
 			}
 		}
 	}
+	/* #endif */
 </style>

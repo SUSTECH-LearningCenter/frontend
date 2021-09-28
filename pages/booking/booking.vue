@@ -25,7 +25,7 @@
 			</view>
 		</view>
 
-		<timetable class="tb" :timetables="timetables" :available="available" :week_index="week_index+1"></timetable>
+		<timetable class="tb" :timetables="timetables" :available="available" :week_index="week_index" :week="week"></timetable>
 	</view>
 </template>
 
@@ -33,7 +33,7 @@
 	import Timetable from '@/components/lpx-timetable/lpx-timetable.vue'
 	export default {
 		onShow: function() {
-			this.update_page(parseInt(this.week_index)+1)
+			this.update_page(parseInt(this.week_index))
 		},
 		components: {
 			Timetable
@@ -60,7 +60,10 @@
 				// 	"false","false","false","false","false","false","false","false","false","false","false","false","false","false","false","false",
 				// ],
 				available:[],
+				week:['一\n', '二\n', '三\n', '四\n', '五\n', '六\n', '七\n'],
 				array: [{
+						name: '国庆周'
+					},{
 						name: '第一周'
 					}, {
 						name: '第二周'
@@ -111,11 +114,10 @@
 		methods: {
 			bindPickerChange: function(e) {
 				this.week_index = parseInt(e.detail.value)
-				this.update_page(parseInt(e.detail.value)+1)
+				this.update_page(parseInt(e.detail.value))
 
 			},
 			update_page: function(week) {
-				console.log(this.week_index)
 				uni.request({
 					url: getApp().globalData.url+'api/main/get-by-week2',
 					method: 'GET',
@@ -124,7 +126,7 @@
 					},
 					success: res => {
 						this.timetables = res.data
-						console.log(res.data)
+						// console.log(res.data)
 						
 					},
 
@@ -142,7 +144,7 @@
 					},
 					success: res => {
 						this.available = res.data
-						console.log(res.data)
+						// console.log(res.data)
 					},
 					fail: (e) => {
 						console.log("getMachineNum fail:" + JSON.stringify(e));
@@ -150,7 +152,24 @@
 					complete: () => {
 					}
 				});
-			
+				
+				// uni.request({
+				// 	url: getApp().globalData.url+'api/main/wd2date2',
+				// 	method: 'GET',
+				// 	data: {
+				// 		"weekId": week,
+				// 	},
+				// 	success: res => {
+				// 		this.week = res.data;
+				// 	},
+				// 	fail: (e) => {
+				// 		console.log("getMachineNum fail:" + JSON.stringify(e));
+				// 	},
+				// 	complete: () => {
+				// 	}
+				// });
+				
+				
 			}
 		}
 	}
@@ -169,8 +188,8 @@
 	/* #ifdef H5 */
 	.content {
 		width: 70%;
-		margin-left: 15%;
-		margin-right: 15%;
+		margin-left: 3%;
+		margin-right: 3%;
 	}
 	/* #endif */
 	
@@ -182,26 +201,32 @@
 	
 	.tb {
 		opacity: 0.9;
+		width:135%;
+		align-items: center;
+		margin-left: 0px;
 	}
 	
 	.head {
+		width: 100%;
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
 		align-items: center;
 		opacity: 0.8;
 	}
-
+	
 	.part1 {
 		display: flex;
 		flex-direction: row;
 		align-items: center;
 	}
-
+	
 	.part2 {
 		display: flex;
 		flex-direction: column;
-		justify-content: flex-start;
-		align-items: flex-end;
+		/* justify-content: flex-start;
+		align-items: flex-end; */
+		
+		/* margin-right:100px; */
 	}
 </style>

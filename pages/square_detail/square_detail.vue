@@ -20,7 +20,7 @@
 						<block v-else>
 							<text class="text" style="color: #DD524D;">不可预约</text>
 						</block>
-						<button class="book" @click="book(item.advisorId)">预约</button>
+						<button class="book" @click="book(item.id)">预约</button>
 					</view>
 				</view>
 				<!-- #endif -->
@@ -32,7 +32,7 @@
 					<view class="name-good">
 						<view class="name-button">
 							<view class="name">{{item.advisorName}}</view>
-							<button class="book" @click="book(item.advisorId)">预约</button>
+							<button class="book" @click="book(item.id)">预约</button>
 						</view>						
 						<view class="good">擅长：{{item.more.prefer}}</view>
 					</view>
@@ -111,7 +111,7 @@
 					},
 					success: res => {
 						this.information[i].more = res.data
-						console.log(this.information)
+						// console.log(this.information[i].more)
 					},
 					fail: (e) => {
 						console.log("getMachineNum fail:" + JSON.stringify(e));

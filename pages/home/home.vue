@@ -5,10 +5,11 @@
 		<!-- <image class="logo" src="/static/back.png" mode="heightFix"></image> -->
 		<!-- #ifdef H5 -->
 		<view class="text_all">
-			<text class="text1">学习中心学业咨询预约程序\n\n</text>
+			<text class="text1">学习中心学业咨询预约程序\n</text>
 			<text class="text2">“学生学业咨询”是由学工部学习中心主办的朋辈学生学习生活咨询项目，这里可以为你提供学业咨询和指导，使你能够有效地掌握知识和技能，形成解决问题的能力，培养良好的学习习惯。欢迎有需要的同学前来预约！</text>
-			<view class="wx_button" @click="back">
-				<button type="default"class="my_button"> 返回选择界面</button>
+			<view class="wx_button2" @click="back">
+				<!--<button type="default"class="my_button"> 返回选择界面</button>-->
+				<a class="backUrl2"><u>导师学业咨询请返回</u></a>
 			</view>
 		</view>
 		
@@ -77,7 +78,7 @@
 	}
 	
 	.text_all {
-		height: 30%;
+		height: 50%;
 		width: 60%;
 		margin-left: 20%;
 		margin-right: 20%;
@@ -92,9 +93,9 @@
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		font-size: 80rpx;
+		font-size: 40rpx;
 		margin-bottom: 100rpx;
-		margin-top: 50rpx;
+		margin-top: 0rpx;
 		text-align: center;
 	}
 	
@@ -102,7 +103,7 @@
 		// display: flex;
 		// flex-direction: column;
 		// justify-content: center;
-		font-size: 40rpx;
+		font-size: 30rpx;
 	}
 	.wx_button {
 		margin-top: 0%;
@@ -115,6 +116,11 @@
 			color: #ffffff;
 			font-size: 50%;
 		}
+	}
+	.backUrl2{
+		color: #1b1b1b;
+		font-size: 30rpx;
+		text-decoration: underline;
 	}
 	/* #endif */
 	
@@ -162,7 +168,7 @@
 		flex-direction: column;
 		justify-content: center;
 		font-size: 50rpx;
-		margin-bottom: 100rpx;
+		margin-bottom: 60rpx;
 	}
 	
 	.text2 {
@@ -170,7 +176,7 @@
 		margin-right: 15%;
 		display: flex;
 		flex-direction: column;
-		font-size: 40rpx;
+		font-size: 30rpx;
 	}
 	
 	.wx_picture {

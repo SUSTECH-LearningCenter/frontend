@@ -1,18 +1,9 @@
 
 .uni-date-x {
-	display: -webkit-box;
-	display: -webkit-flex;
 	display: flex;
-	-webkit-box-orient: horizontal;
-	-webkit-box-direction: normal;
-	-webkit-flex-direction: row;
-	        flex-direction: row;
-	-webkit-box-align: center;
-	-webkit-align-items: center;
-	        align-items: center;
-	-webkit-box-pack: center;
-	-webkit-justify-content: center;
-	        justify-content: center;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
 	padding: 0 10px;
 	border-radius: 4px;
 	background-color: #fff;
@@ -74,8 +65,7 @@
 	left: 0px;
 	right: 0px;
 	background-color: rgba(0, 0, 0, 0);
-	-webkit-transition-duration: 0.3s;
-	        transition-duration: 0.3s;
+	transition-duration: 0.3s;
 	z-index: 996;
 }
 .uni-date-single--x {
@@ -111,33 +101,19 @@
 /* 添加时间 */
 .popup-x-header {
 
-	display: -webkit-box;
-	display: -webkit-flex;
 	display: flex;
 
-	-webkit-box-orient: horizontal;
-	-webkit-box-direction: normal;
-	-webkit-flex-direction: row;
-	        flex-direction: row;
+	flex-direction: row;
 	/* justify-content: space-between; */
 }
 .popup-x-header--datetime {
 
-	display: -webkit-box;
-	display: -webkit-flex;
 	display: flex;
 
-	-webkit-box-orient: horizontal;
-	-webkit-box-direction: normal;
-	-webkit-flex-direction: row;
-	        flex-direction: row;
-	-webkit-box-flex: 1;
-	-webkit-flex: 1;
-	        flex: 1;
+	flex-direction: row;
+	flex: 1;
 }
 .popup-x-body {
-	display: -webkit-box;
-	display: -webkit-flex;
 	display: flex;
 }
 .popup-x-footer {
@@ -175,9 +151,7 @@
 }
 .uni-date-changed .uni-date-changed--time {
 	/* display: flex; */
-	-webkit-box-flex: 1;
-	-webkit-flex: 1;
-	        flex: 1;
+	flex: 1;
 }
 .uni-date-changed--time-date {
 	color: #333;

@@ -17,8 +17,7 @@
 			<image class="list-icon" src="~@/static/chevron.png"></image>
 			<!-- #endif -->
 		</view>
-		<!-- #ifdef MP-WEIXIN -->
-		<view class="list-item" bindtap="">
+		<!-- <view class="list-item" bindtap="">
 			<text class="list-name">预约方式</text>
 			<image class="list-icon" src="~@/static/chevron.png"></image>
 		</view>
@@ -29,8 +28,7 @@
 		<view class="list-item" bindtap="">
 			<text class="list-name">用户反馈</text>
 			<image class="list-icon" src="~@/static/chevron.png"></image>
-		</view>
-		<!-- #endif -->
+		</view> -->
 	</view>
 </template>
 

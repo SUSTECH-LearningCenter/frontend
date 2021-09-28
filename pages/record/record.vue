@@ -157,9 +157,9 @@
 	
 	/* #ifdef H5 */
 	.content {
-		width: 70%;
-		margin-left: 15%;
-		margin-right: 15%;
+		width: 90%;
+		margin-left: 5%;
+		margin-right: 5%;
 	}
 	/* #endif */
 	

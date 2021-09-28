@@ -87,6 +87,7 @@
 			// 设置自定义表单校验规则，必须在节点渲染完毕后执行
 		},
 		onLoad: function(option) {
+			
 			this.tutorID = parseInt(option.tutorID)
 			console.log(this.tutorID)
 		},

@@ -1,8 +1,8 @@
 <template>
 	<view class="timetable">
 		<view class="header">
-			<view class="header-item" v-for="(item,index) in week" :key="item"
-				:style="{ color: todayWeekIndex === index ? '#4070FF' : 'unset' }">{{ item }}</view>
+			<text class="header-item" v-for="(item,index) in week" :key="item"
+				:style="{ color: todayWeekIndex === index ? '#4070FF' : 'unset' }">{{ item }}</text>
 		</view>
 
 		<view class="main">
@@ -218,7 +218,7 @@
 
 		.header {
 			padding-left: 88rpx;
-			height: 56rpx;
+			height: 80rpx;
 			display: flex;
 			align-items: center;
 			background: #F5F7FA;

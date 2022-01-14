@@ -9,18 +9,18 @@
 						</view>
 					</picker>
 				</view>
-				<!-- <view>
-					<text>点击改周次 </text>
-				</view> -->
+				<view>
+					<text> {{'<'}}---点此修改周次 </text>
+				</view>
 			</view>
 			<view class="part2">
 				<view>
 					<text style="color: #00CE47;">绿色</text>
-					<text>表示可预约</text>
+					<text>表示可以预约</text>
 				</view>
 				<view>
 					<text style="color: #DD524D">红色</text>
-					<text>表示已预约</text>
+					<text>表示不可预约</text>
 				</view>
 			</view>
 		</view>
@@ -32,8 +32,37 @@
 <script>
 	import Timetable from '@/components/lpx-timetable/lpx-timetable.vue'
 	export default {
+		onShareAppMessage(res) {
+			if (res.from === 'button') { // 来自页面内分享按钮
+				console.log(res.target)
+			}
+			return {
+				title: '南科大学业咨询预约系统',
+				imageUrl:'/static/share.jpg',
+				path: '/pages/choose/choose'
+			}
+		},
 		onShow: function() {
-			this.update_page(parseInt(this.week_index))
+			
+			uni.request({
+				url: getApp().globalData.url+'api/main/get-week-number',
+				method: 'GET',
+				data: {
+					"null": 0,
+				},
+				success: res => {
+					this.week_index = res.data.message
+					// console.log(res.data.message)
+					this.update_page(parseInt(this.week_index))
+				},
+				fail: (e) => {
+					console.log("getMachineNum fail:" + JSON.stringify(e));
+				},
+				complete: () => {
+				}
+			});
+			
+			
 		},
 		components: {
 			Timetable
@@ -108,7 +137,7 @@
 						name: '第二十周'
 					}
 				],
-				week_index: 4
+				week_index: 0
 			}
 		},
 		methods: {
@@ -119,17 +148,18 @@
 			},
 			update_page: function(week) {
 				uni.request({
-					url: getApp().globalData.url+'api/main/get-by-week2',
+					url: getApp().globalData.url+'api/main/get-by-new-week2',
 					method: 'GET',
 					data: {
 						"weekId": week,
+						"type":getApp().globalData.who
 					},
 					success: res => {
 						this.timetables = res.data
-						// console.log(res.data)
+						console.log(res.data)
 						
 					},
-
+				
 					fail: (e) => {
 						console.log("getMachineNum fail:" + JSON.stringify(e));
 					},
@@ -137,10 +167,11 @@
 				});
 				
 				uni.request({
-					url: getApp().globalData.url+'api/main/get-by-week3',
+					url: getApp().globalData.url+'api/main/get-by-new-week3',
 					method: 'GET',
 					data: {
 						"weekId": week,
+						"type":getApp().globalData.who
 					},
 					success: res => {
 						this.available = res.data
@@ -153,21 +184,21 @@
 					}
 				});
 				
-				// uni.request({
-				// 	url: getApp().globalData.url+'api/main/wd2date2',
-				// 	method: 'GET',
-				// 	data: {
-				// 		"weekId": week,
-				// 	},
-				// 	success: res => {
-				// 		this.week = res.data;
-				// 	},
-				// 	fail: (e) => {
-				// 		console.log("getMachineNum fail:" + JSON.stringify(e));
-				// 	},
-				// 	complete: () => {
-				// 	}
-				// });
+				uni.request({
+					url: getApp().globalData.url+'api/main/wd2date2',
+					method: 'GET',
+					data: {
+						"weekId": week,
+					},
+					success: res => {
+						this.week = res.data;
+					},
+					fail: (e) => {
+						console.log("getMachineNum fail:" + JSON.stringify(e));
+					},
+					complete: () => {
+					}
+				});
 				
 				
 			}

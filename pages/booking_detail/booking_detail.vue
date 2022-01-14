@@ -22,9 +22,9 @@
 					<uni-easyinput v-model="baseFormData.content" placeholder="请输入希望交流的内容" />
 				</uni-forms-item>
 				<uni-forms-item>
-				    <button style="background-color: #00557f; color: white;" @click="getCode">
-					    获取邮箱验证码
-				    </button>
+					<button style="background-color: #00557f; color: white;" @click="getCode">
+						获取邮箱验证码
+					</button>
 				</uni-forms-item>
 				<uni-forms-item label="验证码" required name="code">
 					<uni-easyinput v-model="baseFormData.code" placeholder="请检查邮箱,输入验证码" />
@@ -87,7 +87,7 @@
 			// 设置自定义表单校验规则，必须在节点渲染完毕后执行
 		},
 		onLoad: function(option) {
-			
+
 			this.tutorID = parseInt(option.tutorID)
 			console.log(this.tutorID)
 		},
@@ -96,7 +96,7 @@
 				this.$refs.form.validate().then(first_res => {
 					console.log('表单数据信息：' + first_res);
 					uni.request({
-						url: getApp().globalData.url + 'api/reserve/create?id='+this.tutorID,
+						url: getApp().globalData.url + 'api/reserve/create?id=' + this.tutorID,
 						method: 'POST',
 						data: {
 							"code": first_res.code,
@@ -107,18 +107,28 @@
 							"studentPhone": first_res.phone
 						},
 						success: res => {
-							console.log("getMachineNum success:" + JSON.stringify(res));
-							uni.showToast({
-								title: "预约成功，请准时到场",
-								mask: false,
-								duration: 1500
-							});
-
+							
 						},
 						fail: (e) => {
 							console.log("getMachineNum fail:" + JSON.stringify(e));
 						},
-						complete: () => {}
+						complete: (complete) => {
+							if(complete.data.code==200){
+								uni.showToast({
+									title:"预约成功",
+									mask: false,
+									duration: 1500
+								});
+							}else{
+								uni.showToast({
+									title:complete.data.message,
+									mask: false,
+									icon:"none",
+									duration: 1500
+								});
+							}
+							
+						}
 					});
 
 				}).catch(err => {
@@ -127,22 +137,33 @@
 			},
 			getCode: function() {
 				uni.request({
-					url: getApp().globalData.url+'api/reserve/send-code',
+					url: getApp().globalData.url + 'api/reserve/send-code',
 					method: 'GET',
 					data: {
 						"SID": this.baseFormData.id,
 					},
 					success: res => {
-						uni.showToast({
-							title: "验证码已发送，请检查邮箱",
-							mask: false,
-							duration: 1500
-						});
+						
 					},
 					fail: (e) => {
 						console.log("getMachineNum fail:" + JSON.stringify(e));
 					},
-					complete: () => {}
+					complete: (complete) => {
+						if(complete.data.code==200){
+							uni.showToast({
+								title:"验证码已发送",
+								mask: false,
+								duration: 1500
+							});
+						}else{
+							uni.showToast({
+								title: complete.data.message,
+								icon: "none",
+								mask: false,
+								duration: 1500
+							});
+						}
+					}
 
 				})
 			}
@@ -153,7 +174,7 @@
 <style lang="scss">
 	@import '@/common/uni-nvue.scss';
 
-    page {
+	page {
 		width: 100%;
 		height: 100%;
 		/* #ifdef H5 */
@@ -161,7 +182,7 @@
 		background-size: cover;
 		/* #endif */
 	}
-	
+
 	/* #ifdef H5 */
 	.container {
 		width: 70%;
@@ -169,6 +190,7 @@
 		margin-left: 15%;
 		margin-right: 15%;
 	}
+
 	/* #endif */
 
 	/* #ifdef MP-WEIXIN */
@@ -176,8 +198,9 @@
 		width: 100%;
 		height: 100%;
 	}
+
 	/* #endif */
-	
+
 	.example {
 		padding: 15px;
 		background-color: #fff;

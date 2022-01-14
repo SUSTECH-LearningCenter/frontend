@@ -2,7 +2,7 @@
 	<view class="content">
 		<view class="part1">
 			<view class="title">
-				一对一学业咨询预约系统 
+				一对一学业咨询预约系统
 			</view>
 			<view class="square">
 				<view class="system">
@@ -26,25 +26,41 @@
 
 <script>
 	export default {
+		onShareAppMessage(res) {
+			if (res.from === 'button') { // 来自页面内分享按钮
+				console.log(res.target)
+			}
+			return {
+				title: '南科大学业咨询预约系统',
+				imageUrl:'/static/share.jpg',
+				path: '/pages/choose/choose'
+			}
+		},
 		data() {
 			return {
-				
+
 			}
 		},
 		methods: {
 			toTeacher() {
-				uni.showToast({
-					title: "该功能尚未开放，敬请期待",
-					mask: false,
-					duration: 1500,
-					icon:"none"
-				});
+				// uni.showToast({
+				// 	title: "该功能尚未开放，敬请期待",
+				// 	mask: false,
+				// 	duration: 1500,
+				// 	icon:"none"
+				// });
+				getApp().globalData.who = 1
+				console.log(getApp().globalData.who)
+				uni.switchTab({
+					url: "../home/home"
+				})
 			},
 			toStudent() {
+				getApp().globalData.who = 0
 				uni.switchTab({
-					url:"../home/home"
+					url: "../home/home"
 				})
-				
+
 			}
 		}
 	}
@@ -55,10 +71,11 @@
 	page {
 		height: 100%;
 		width: 100%;
-		
+
 	}
+
 	.content {
-		
+
 		width: 100%;
 		margin-left: 0%;
 		margin-right: 10%;
@@ -66,15 +83,15 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		
+
 		.part1 {
 			// background-color: #9300dd;
 			background-color: #dd4200;
 			// background-color: #b83a00;
-			
+
 			width: 100%;
 			height: 90%;
-			
+
 			.title {
 				color: white;
 				height: 10%;
@@ -86,7 +103,7 @@
 				font-size: 50rpx;
 				text-align: center;
 			}
-			
+
 			.square {
 				color: white;
 				height: 40%;
@@ -98,11 +115,13 @@
 				display: flex;
 				flex-direction: column;
 				align-items: center;
+
 				.system {
 					margin-top: 0%;
 					font-size: 40rpx;
 					text-align: center;
 				}
+
 				.teacher {
 					border: #ffffff solid;
 					border-radius: 5%/20%;
@@ -116,6 +135,7 @@
 					flex-direction: column;
 					justify-content: center;
 				}
+
 				.student {
 					border: #ffffff solid;
 					border-radius: 5%/20%;
@@ -129,19 +149,22 @@
 					flex-direction: column;
 					justify-content: center;
 				}
+
 				.bottom_info {
 					margin-top: 10%;
 					font-size: 25rpx;
 					text-align: center;
 					align-items: center;
 					color: #000000;
-					}
+				}
 			}
 		}
+
 		.part2 {
 			background-color: #ffffff;
 			width: 100%;
 			height: 10%;
+
 			.bottom_info {
 				margin-top: 0%;
 				font-size: 25rpx;
@@ -150,30 +173,32 @@
 			}
 		}
 	}
+
 	/* #endif */
-	
+
 	/* #ifdef MP-WEIXIN */
 	page {
 		height: 100%;
 		width: 100%;
-		
+
 	}
+
 	.content {
 		width: 100%;
-		
+
 		height: 100%;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		
+
 		.part1 {
 			// background-color: #9300dd;
 			background-color: #dd4200;
 			// background-color: #b83a00;
-			
+
 			width: 100%;
 			height: 80%;
-			
+
 			.title {
 				color: white;
 				height: 10%;
@@ -185,7 +210,7 @@
 				font-size: 50rpx;
 				text-align: center;
 			}
-			
+
 			.square {
 				color: white;
 				height: 60%;
@@ -197,11 +222,13 @@
 				display: flex;
 				flex-direction: column;
 				align-items: center;
+
 				.system {
 					margin-top: 20%;
 					font-size: 40rpx;
 					text-align: center;
 				}
+
 				.teacher {
 					border: #ffffff solid;
 					border-radius: 5%/20%;
@@ -215,6 +242,7 @@
 					flex-direction: column;
 					justify-content: center;
 				}
+
 				.student {
 					border: #ffffff solid;
 					border-radius: 5%/20%;
@@ -230,10 +258,12 @@
 				}
 			}
 		}
+
 		.part2 {
 			background-color: #ffffff;
 			width: 100%;
 			height: 20%;
+
 			.bottom_info {
 				margin-top: 10%;
 				font-size: 25rpx;
@@ -242,5 +272,6 @@
 			}
 		}
 	}
+
 	/* #endif */
 </style>

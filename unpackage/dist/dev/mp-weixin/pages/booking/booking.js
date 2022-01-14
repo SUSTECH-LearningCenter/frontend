@@ -9,8 +9,8 @@
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 5);
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _booking = _interopRequireDefault(__webpack_require__(/*! ./pages/booking/booking.vue */ 29));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 3));
+var _booking = _interopRequireDefault(__webpack_require__(/*! ./pages/booking/booking.vue */ 29));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}wx.__webpack_require_UNI_MP_PLUGIN__ = __webpack_require__;
 createPage(_booking.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
@@ -130,7 +130,7 @@ __webpack_require__.r(__webpack_exports__);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var Timetable = function Timetable() {__webpack_require__.e(/*! require.ensure | components/lpx-timetable/lpx-timetable */ "components/lpx-timetable/lpx-timetable").then((function () {return resolve(__webpack_require__(/*! @/components/lpx-timetable/lpx-timetable.vue */ 84));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var Timetable = function Timetable() {__webpack_require__.e(/*! require.ensure | components/lpx-timetable/lpx-timetable */ "components/lpx-timetable/lpx-timetable").then((function () {return resolve(__webpack_require__(/*! @/components/lpx-timetable/lpx-timetable.vue */ 92));}).bind(null, __webpack_require__)).catch(__webpack_require__.oe);};var _default =
 
 
 
@@ -164,8 +164,37 @@ __webpack_require__.r(__webpack_exports__);
 
 
 {
-  onShow: function onShow() {
-    this.update_page(parseInt(this.week_index));
+  onShareAppMessage: function onShareAppMessage(res) {
+    if (res.from === 'button') {// 来自页面内分享按钮
+      console.log(res.target);
+    }
+    return {
+      title: '南科大学业咨询预约系统',
+      imageUrl: '/static/share.jpg',
+      path: '/pages/choose/choose' };
+
+  },
+  onShow: function onShow() {var _this = this;
+
+    uni.request({
+      url: getApp().globalData.url + 'api/main/get-week-number',
+      method: 'GET',
+      data: {
+        "null": 0 },
+
+      success: function success(res) {
+        _this.week_index = res.data.message;
+        // console.log(res.data.message)
+        _this.update_page(parseInt(_this.week_index));
+      },
+      fail: function fail(e) {
+        console.log("getMachineNum fail:" + JSON.stringify(e));
+      },
+      complete: function complete() {
+      } });
+
+
+
   },
   components: {
     Timetable: Timetable },
@@ -240,7 +269,7 @@ __webpack_require__.r(__webpack_exports__);
         name: '第二十周' }],
 
 
-      week_index: 4 };
+      week_index: 0 };
 
   },
   methods: {
@@ -249,16 +278,17 @@ __webpack_require__.r(__webpack_exports__);
       this.update_page(parseInt(e.detail.value));
 
     },
-    update_page: function update_page(week) {var _this = this;
+    update_page: function update_page(week) {var _this2 = this;
       uni.request({
-        url: getApp().globalData.url + 'api/main/get-by-week2',
+        url: getApp().globalData.url + 'api/main/get-by-new-week2',
         method: 'GET',
         data: {
-          "weekId": week },
+          "weekId": week,
+          "type": getApp().globalData.who },
 
         success: function success(res) {
-          _this.timetables = res.data;
-          // console.log(res.data)
+          _this2.timetables = res.data;
+          console.log(res.data);
 
         },
 
@@ -269,13 +299,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
       uni.request({
-        url: getApp().globalData.url + 'api/main/get-by-week3',
+        url: getApp().globalData.url + 'api/main/get-by-new-week3',
         method: 'GET',
         data: {
-          "weekId": week },
+          "weekId": week,
+          "type": getApp().globalData.who },
 
         success: function success(res) {
-          _this.available = res.data;
+          _this2.available = res.data;
           // console.log(res.data)
         },
         fail: function fail(e) {
@@ -285,21 +316,21 @@ __webpack_require__.r(__webpack_exports__);
         } });
 
 
-      // uni.request({
-      // 	url: getApp().globalData.url+'api/main/wd2date2',
-      // 	method: 'GET',
-      // 	data: {
-      // 		"weekId": week,
-      // 	},
-      // 	success: res => {
-      // 		this.week = res.data;
-      // 	},
-      // 	fail: (e) => {
-      // 		console.log("getMachineNum fail:" + JSON.stringify(e));
-      // 	},
-      // 	complete: () => {
-      // 	}
-      // });
+      uni.request({
+        url: getApp().globalData.url + 'api/main/wd2date2',
+        method: 'GET',
+        data: {
+          "weekId": week },
+
+        success: function success(res) {
+          _this2.week = res.data;
+        },
+        fail: function fail(e) {
+          console.log("getMachineNum fail:" + JSON.stringify(e));
+        },
+        complete: function complete() {
+        } });
+
 
 
     } } };exports.default = _default;

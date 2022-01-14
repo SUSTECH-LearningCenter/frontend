@@ -9,8 +9,8 @@
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(createPage) {__webpack_require__(/*! uni-pages */ 5);
-var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 2));
-var _home = _interopRequireDefault(__webpack_require__(/*! ./pages/home/home.vue */ 21));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _vue = _interopRequireDefault(__webpack_require__(/*! vue */ 3));
+var _home = _interopRequireDefault(__webpack_require__(/*! ./pages/home/home.vue */ 21));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}wx.__webpack_require_UNI_MP_PLUGIN__ = __webpack_require__;
 createPage(_home.default);
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["createPage"]))
 
@@ -161,11 +161,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 var _default =
 {
-  data: function data() {
-    return {};
+  onShareAppMessage: function onShareAppMessage(res) {
+    if (res.from === 'button') {// 来自页面内分享按钮
+      console.log(res.target);
+    }
+    return {
+      title: '南科大学业咨询预约系统',
+      imageUrl: '/static/share.jpg',
+      path: '/pages/choose/choose' };
 
+  },
+  data: function data() {
+    return {
+      who: getApp().globalData.who };
 
   },
   onLoad: function onLoad() {
@@ -173,7 +189,7 @@ var _default =
   },
   methods: {
     back: function back() {
-      uni.navigateTo({
+      uni.redirectTo({
         url: "../choose/choose" });
 
     } } };exports.default = _default;

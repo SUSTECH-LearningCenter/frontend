@@ -5,13 +5,13 @@
 			</image>
 			<text class="userinfo-nickname">用户</text>
 		</view>
-		<view class="list-item" bindtap="" @click="back">
+		<view class="list-item" bindtap="" @click="to_record_me">
 			<text class="list-name">我的预约</text>
 			<!-- #ifdef MP-WEIXIN -->
 			<image class="list-icon" src="~@/static/chevron.png"></image>
 			<!-- #endif -->
 		</view>
-		<view class="list-item" bindtap="" @click="back">
+		<view class="list-item" bindtap="" @click="to_record_task">
 			<text class="list-name">我的任务</text>
 			<!-- #ifdef MP-WEIXIN -->
 			<image class="list-icon" src="~@/static/chevron.png"></image>
@@ -34,6 +34,16 @@
 
 <script>
 	export default {
+		onShareAppMessage(res) {
+			if (res.from === 'button') { // 来自页面内分享按钮
+				console.log(res.target)
+			}
+			return {
+				title: '南科大学业咨询预约系统',
+				imageUrl:'/static/share.jpg',
+				path: '/pages/choose/choose'
+			}
+		},
 		data() {
 			return {
 
@@ -43,16 +53,16 @@
 
 		},
 		methods: {
-			back() {
+			to_record_me() {
 				uni.navigateTo({
-					url: "../record/record"
+					url: "../record_me/record_me"
 				})
 			},
-			// back2(){
-			// 	uni.navigateTo({
-			// 		url:"../task/task"
-			// 	})
-			// 	}
+			to_record_task() {
+				uni.navigateTo({
+					url: "../record_task/record_task"
+				})
+			},
 
 		}
 	}

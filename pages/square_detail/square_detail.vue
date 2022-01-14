@@ -1,7 +1,7 @@
 <template>
 	<view class="container">
 		<scroll-view class="list"scroll-y="true" enable-flex="true">
-			<view class="item"v-for="(item,index) in information">
+			<view class="item" v-for="(item,index) in information">
 				<!-- #ifdef MP-WEIXIN -->
 				<view class="image-container">
 					<image class="image" :src="item.more.avatar" mode="scaleToFill"></image>
@@ -9,10 +9,14 @@
 				<view class="info-container">
 					<view class="name-good">
 						<view class="name">{{item.advisorName}}</view>						
-						<view class="prof">专业：{{item.more.prof}}</view>
+						<view class="prof" v-if="who==0">专业：{{item.more.prof}}</view>
+						<view class="prof" v-else>院系部门：{{item.more.prof}}</view>
 					</view>
+					<view class="good" v-if="who==1">岗位： {{item.more.college}}</view>
+					<view class="good" v-if="who==1">地点： {{item.more.place}}</view>
 					<view class="good">擅长：{{item.more.prefer}}</view>
-					<view class="detail">{{item.more.intro}}</view>
+					<text class="detail" v-if="who==0">{{item.more.intro}}</text>
+					<text class="detail" v-else>教育经历: {{item.more.intro}}</text>
 					<view class="other">
 						<block  v-if="item.status=='registering'">
 						    <text class="text" style="color: #2087B2;">可预约</text>
@@ -20,7 +24,8 @@
 						<block v-else>
 							<text class="text" style="color: #DD524D;">不可预约</text>
 						</block>
-						<button class="book" @click="book(item.id)">预约</button>
+						
+						<button v-if="item.status=='registering'" class="book" @click="book(item.id)">预约</button>
 					</view>
 				</view>
 				<!-- #endif -->
@@ -51,7 +56,7 @@
 		data() {
 			return {
 				loading: false,
-
+				who : getApp().globalData.who,
 				week: 0,
 				day: 0,
 				time: 0,
@@ -66,20 +71,24 @@
 			this.day = parseInt(option.day) + 1
 			this.time = parseInt(option.time)
 			uni.request({
-				url: getApp().globalData.url+'api/main/get-by-square',
+				url: getApp().globalData.url+'api/main/get-by-square2',
 				method: 'GET',
 				data: {
 					"weekId": this.week,
 					"dayId": this.day,
 					"timeId": this.time + 9,
+					"type":getApp().globalData.who
 				},
 				success: res => {
+					console.log(res.data.content)
 					var temp = res.data.content
 					var m = {
 						"avatar": "",
 						"prof": "",
 						"prefer": "",
-						"intro": ""
+						"intro": "",
+						"college":"",
+						"place":"",
 					}
 					for (var i = 0; i < temp.length; i++) {
 						temp[i].more = m
@@ -160,21 +169,21 @@
 		border-bottom: #888888 solid;
 	}
 	.image-container {
-		width: 30%;
+		width: 25%;
 		height: 100%;
 		display: flex;
 		flex-direction: row;
 	}
 	.image {
 		margin-top: 5%;
-		width: 60%;
-		height: 20%;
+		width: 60px;
+		height: 60px;
 		margin-left: 20%;
 		border-radius: 50%;
 	}
 	
 	.info-container {
-		width: 80%;
+		width: 75%;
 		height: 100%;
 		display: flex;
 		flex-direction: column;
@@ -217,7 +226,7 @@
 	.detail {
 		width: 100%;
 		height: 40%;
-		margin-top: 1%;
+		margin-top: 2%;
 		color: #7a7a7a;
 		font-size: smaller;
 	}
@@ -236,9 +245,10 @@
 		font-size: smaller;
 	}
 	.book {
-		width: 20%;
+		width: 30%;
 		height: 50%;
 		margin-top: 5%;
+		margin-right: 10%;
 		font-size: small;
 		display: flex;
 		flex-direction: column;
@@ -271,8 +281,8 @@
 	}
 	.image {
 		margin-top: 5%;
-		width: 60%;
-		height: 70%;
+		width: 60px;
+		height: 60px;
 		margin-left: 20%;
 		border-radius: 50%;
 	}

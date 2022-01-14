@@ -25,14 +25,23 @@
             
         }
         ,{
-            "path" : "pages/record/record",
+            "path" : "pages/record_me/record_me",
             "style" :                                                                                    
             {
-                "navigationBarTitleText": "个人中心",
+                "navigationBarTitleText": "",
                 "enablePullDownRefresh": false
             }
             
-        }
+        },
+		{
+		    "path" : "pages/record_task/record_task",
+		    "style" :                                                                                    
+		    {
+		        "navigationBarTitleText": "",
+		        "enablePullDownRefresh": false
+		    }
+		    
+		}
         ,{
             "path" : "pages/admin/admin",
             "style" :                                                                                    
@@ -78,7 +87,6 @@
 		    }
 		    
 		}
-        
     ],
 	// #ifdef MP-WEIXIN
 	"globalStyle": {

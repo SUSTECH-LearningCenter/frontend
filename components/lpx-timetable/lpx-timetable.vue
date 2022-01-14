@@ -17,7 +17,7 @@
 				<view class="week" v-for="(week, weekIndex) in courseData" :key="weekIndex">
 					<view class="courseList" v-for="(course, courseIndex) in week" :key="courseIndex">
 						<view @click="handleCourseClick(course, weekIndex, courseIndex)" class="course"
-							:style="{ height: (course.length * 85) + 'px', background: course.backgroundColor }"
+							:style="{ height: (course.length * 80) + 'px', background: course.backgroundColor }"
 							v-if="course.length > 0">{{ course.name }}</view>
 					</view>
 				</view>

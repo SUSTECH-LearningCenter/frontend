@@ -46,9 +46,7 @@ view {
   background: #ffffff;
 }
 .example-body {
-
   display: flex;
-
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
@@ -60,9 +58,7 @@ view {
   padding: 0 15px;
 }
 .example-info {
-
   display: block;
-
   padding: 15px;
   color: #3b4144;
   background-color: #ffffff;
@@ -84,9 +80,7 @@ view {
   color: #FFFFFF;
 }
 .word-btn {
-
   display: flex;
-
   flex-direction: row;
   align-items: center;
   justify-content: center;

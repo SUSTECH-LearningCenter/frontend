@@ -32,7 +32,14 @@
 			</uni-forms>
 			<button style="background-color: #00557f; color: white;" @click="submit">提交</button>
 		</view>
-
+		
+		<view class="informed_consent">
+			<radio @click="radioChange" :checked="informed">我已阅读并同意</radio>
+			<text class="informed_detail" @click="read">《知情同意书》</text>
+		</view>
+		<uni-popup ref="popup">
+			<uni-popup-message type="warn" message="请勾选<<知情同意书>>" :duration="2000"></uni-popup-message>
+		</uni-popup>
 	</view>
 </template>
 
@@ -71,6 +78,9 @@
 					},
 
 				},
+				
+				//informed consent
+				informed: false,
 
 			}
 		},
@@ -88,52 +98,66 @@
 		},
 		onLoad: function(option) {
 
+            this.informed = false
 			this.tutorID = parseInt(option.tutorID)
 			console.log(this.tutorID)
 		},
 		methods: {
-			submit() {
-				this.$refs.form.validate().then(first_res => {
-					console.log('表单数据信息：' + first_res);
-					uni.request({
-						url: getApp().globalData.url + 'api/reserve/create?id=' + this.tutorID,
-						method: 'POST',
-						data: {
-							"code": first_res.code,
-							"consultContent": first_res.content,
-							"qqNumber": first_res.qq,
-							"studentId": first_res.id,
-							"studentName": first_res.name,
-							"studentPhone": first_res.phone
-						},
-						success: res => {
-							
-						},
-						fail: (e) => {
-							console.log("getMachineNum fail:" + JSON.stringify(e));
-						},
-						complete: (complete) => {
-							if(complete.data.code==200){
-								uni.showToast({
-									title:"预约成功",
-									mask: false,
-									duration: 1500
-								});
-							}else{
-								uni.showToast({
-									title:complete.data.message,
-									mask: false,
-									icon:"none",
-									duration: 1500
-								});
-							}
-							
-						}
-					});
-
-				}).catch(err => {
-					console.log('表单错误信息：', err);
+			read: function() {
+				uni.navigateTo({
+					url: "./informed_detail"
 				})
+			},
+			radioChange: function() {
+				this.informed = ~this.informed
+			},
+			 
+			submit() {
+				if (this.informed) {
+					this.$refs.form.validate().then(first_res => {
+						console.log('表单数据信息：' + first_res);
+						uni.request({
+							url: getApp().globalData.url + 'api/reserve/create?id=' + this.tutorID,
+							method: 'POST',
+							data: {
+								"code": first_res.code,
+								"consultContent": first_res.content,
+								"qqNumber": first_res.qq,
+								"studentId": first_res.id,
+								"studentName": first_res.name,
+								"studentPhone": first_res.phone
+							},
+							success: res => {
+							
+							},
+							fail: (e) => {
+								console.log("getMachineNum fail:" + JSON.stringify(e));
+							},
+							complete: (complete) => {
+								if(complete.data.code==200){
+									uni.showToast({
+										title:"预约成功",
+										mask: false,
+										duration: 1500
+									});
+								}else{
+									uni.showToast({
+										title:complete.data.message,
+										mask: false,
+										icon:"none",
+										duration: 1500
+									});
+								}
+							
+							}
+						});
+
+					}).catch(err => {
+						console.log('表单错误信息：', err);
+					})
+				}
+				else
+					this.$refs.popup.open()
 			},
 			getCode: function() {
 				uni.request({
@@ -226,5 +250,18 @@
 		align-items: center;
 		height: 35px;
 		margin-left: 10px;
+	}
+	
+	.informed_consent {
+		display: flex;
+		flex-direction: row;
+	}
+	
+	.informed_detail {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		color: #2196F3;
+		text-decoration: underline;
 	}
 </style>

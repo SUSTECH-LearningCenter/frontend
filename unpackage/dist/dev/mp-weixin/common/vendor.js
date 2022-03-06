@@ -3012,9 +3012,9 @@ if (hadRuntime) {
 /***/ }),
 
 /***/ 114:
-/*!***************************************************************************************************!*\
-  !*** C:/Users/ywhf/Desktop/学生事务中心/booking/uni_modules/uni-forms/components/uni-forms/validate.js ***!
-  \***************************************************************************************************/
+/*!******************************************************************************************!*\
+  !*** E:/study/小程序/LearningCenter/uni_modules/uni-forms/components/uni-forms/validate.js ***!
+  \******************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3508,10 +3508,45 @@ SchemaValidator;exports.default = _default;
 
 /***/ }),
 
-/***/ 164:
-/*!************************************************************************************************!*\
-  !*** C:/Users/ywhf/Desktop/学生事务中心/booking/uni_modules/uni-icons/components/uni-icons/icons.js ***!
-  \************************************************************************************************/
+/***/ 143:
+/*!***************************************************************************************!*\
+  !*** E:/study/小程序/LearningCenter/uni_modules/uni-popup/components/uni-popup/popup.js ***!
+  \***************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default =
+{
+  data: function data() {
+    return {};
+
+
+  },
+  created: function created() {
+    this.popup = this.getParent();
+  },
+  methods: {
+    /**
+              * 获取父元素实例
+              */
+    getParent: function getParent() {var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'uniPopup';
+      var parent = this.$parent;
+      var parentName = parent.$options.name;
+      while (parentName !== name) {
+        parent = parent.$parent;
+        if (!parent) return false;
+        parentName = parent.$options.name;
+      }
+      return parent;
+    } } };exports.default = _default;
+
+/***/ }),
+
+/***/ 179:
+/*!***************************************************************************************!*\
+  !*** E:/study/小程序/LearningCenter/uni_modules/uni-icons/components/uni-icons/icons.js ***!
+  \***************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3650,17 +3685,188 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 
 /***/ }),
 
-/***/ 186:
-/*!*************************************************************************************************************************!*\
-  !*** C:/Users/ywhf/Desktop/学生事务中心/booking/uni_modules/uni-datetime-picker/components/uni-datetime-picker/i18n/index.js ***!
-  \*************************************************************************************************************************/
+/***/ 187:
+/*!***********************************************************************************************************!*\
+  !*** E:/study/小程序/LearningCenter/uni_modules/uni-transition/components/uni-transition/createAnimation.js ***!
+  \***********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 187));
-var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 188));
-var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 189));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
+/* WEBPACK VAR INJECTION */(function(uni) {Object.defineProperty(exports, "__esModule", { value: true });exports.createAnimation = createAnimation;function ownKeys(object, enumerableOnly) {var keys = Object.keys(object);if (Object.getOwnPropertySymbols) {var symbols = Object.getOwnPropertySymbols(object);if (enumerableOnly) symbols = symbols.filter(function (sym) {return Object.getOwnPropertyDescriptor(object, sym).enumerable;});keys.push.apply(keys, symbols);}return keys;}function _objectSpread(target) {for (var i = 1; i < arguments.length; i++) {var source = arguments[i] != null ? arguments[i] : {};if (i % 2) {ownKeys(Object(source), true).forEach(function (key) {_defineProperty(target, key, source[key]);});} else if (Object.getOwnPropertyDescriptors) {Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));} else {ownKeys(Object(source)).forEach(function (key) {Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));});}}return target;}function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;}function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}function _createClass(Constructor, protoProps, staticProps) {if (protoProps) _defineProperties(Constructor.prototype, protoProps);if (staticProps) _defineProperties(Constructor, staticProps);return Constructor;} // const defaultOption = {
+// 	duration: 300,
+// 	timingFunction: 'linear',
+// 	delay: 0,
+// 	transformOrigin: '50% 50% 0'
+// }
+var
+
+
+MPAnimation = /*#__PURE__*/function () {
+  function MPAnimation(options, _this) {_classCallCheck(this, MPAnimation);
+    this.options = options;
+    this.animation = uni.createAnimation(options);
+    this.currentStepAnimates = {};
+    this.next = 0;
+    this.$ = _this;
+
+  }_createClass(MPAnimation, [{ key: "_nvuePushAnimates", value: function _nvuePushAnimates(
+
+    type, args) {
+      var aniObj = this.currentStepAnimates[this.next];
+      var styles = {};
+      if (!aniObj) {
+        styles = {
+          styles: {},
+          config: {} };
+
+      } else {
+        styles = aniObj;
+      }
+      if (animateTypes1.includes(type)) {
+        if (!styles.styles.transform) {
+          styles.styles.transform = '';
+        }
+        var unit = '';
+        if (type === 'rotate') {
+          unit = 'deg';
+        }
+        styles.styles.transform += "".concat(type, "(").concat(args + unit, ") ");
+      } else {
+        styles.styles[type] = "".concat(args);
+      }
+      this.currentStepAnimates[this.next] = styles;
+    } }, { key: "_animateRun", value: function _animateRun()
+    {var styles = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};var config = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+      var ref = this.$.$refs['ani'].ref;
+      if (!ref) return;
+      return new Promise(function (resolve, reject) {
+        nvueAnimation.transition(ref, _objectSpread({
+          styles: styles },
+        config),
+        function (res) {
+          resolve();
+        });
+      });
+    } }, { key: "_nvueNextAnimate", value: function _nvueNextAnimate(
+
+    animates) {var _this2 = this;var step = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;var fn = arguments.length > 2 ? arguments[2] : undefined;
+      var obj = animates[step];
+      if (obj) {var
+
+        styles =
+
+        obj.styles,config = obj.config;
+        this._animateRun(styles, config).then(function () {
+          step += 1;
+          _this2._nvueNextAnimate(animates, step, fn);
+        });
+      } else {
+        this.currentStepAnimates = {};
+        typeof fn === 'function' && fn();
+        this.isEnd = true;
+      }
+    } }, { key: "step", value: function step()
+
+    {var config = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+      this.animation.step(config);
+
+
+
+
+
+
+      return this;
+    } }, { key: "run", value: function run(
+
+    fn) {
+
+      this.$.animationData = this.animation.export();
+      this.$.timer = setTimeout(function () {
+        typeof fn === 'function' && fn();
+      }, this.$.durationTime);
+
+
+
+
+
+
+
+
+    } }]);return MPAnimation;}();
+
+
+
+var animateTypes1 = ['matrix', 'matrix3d', 'rotate', 'rotate3d', 'rotateX', 'rotateY', 'rotateZ', 'scale', 'scale3d',
+'scaleX', 'scaleY', 'scaleZ', 'skew', 'skewX', 'skewY', 'translate', 'translate3d', 'translateX', 'translateY',
+'translateZ'];
+
+var animateTypes2 = ['opacity', 'backgroundColor'];
+var animateTypes3 = ['width', 'height', 'left', 'right', 'top', 'bottom'];
+animateTypes1.concat(animateTypes2, animateTypes3).forEach(function (type) {
+  MPAnimation.prototype[type] = function () {var _this$animation;
+
+    (_this$animation = this.animation)[type].apply(_this$animation, arguments);
+
+
+
+
+    return this;
+  };
+});
+
+function createAnimation(option, _this) {
+  if (!_this) return;
+  clearTimeout(_this.timer);
+  return new MPAnimation(option, _this);
+}
+/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
+
+/***/ }),
+
+/***/ 2:
+/*!***********************************!*\
+  !*** (webpack)/buildin/global.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || new Function("return this")();
+} catch (e) {
+	// This works if the window reference is available
+	if (typeof window === "object") g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
+
+/***/ }),
+
+/***/ 207:
+/*!****************************************************************************************************************!*\
+  !*** E:/study/小程序/LearningCenter/uni_modules/uni-datetime-picker/components/uni-datetime-picker/i18n/index.js ***!
+  \****************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _en = _interopRequireDefault(__webpack_require__(/*! ./en.json */ 208));
+var _zhHans = _interopRequireDefault(__webpack_require__(/*! ./zh-Hans.json */ 209));
+var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 210));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
 {
   en: _en.default,
   'zh-Hans': _zhHans.default,
@@ -3668,10 +3874,10 @@ var _zhHant = _interopRequireDefault(__webpack_require__(/*! ./zh-Hant.json */ 1
 
 /***/ }),
 
-/***/ 187:
-/*!************************************************************************************************************************!*\
-  !*** C:/Users/ywhf/Desktop/学生事务中心/booking/uni_modules/uni-datetime-picker/components/uni-datetime-picker/i18n/en.json ***!
-  \************************************************************************************************************************/
+/***/ 208:
+/*!***************************************************************************************************************!*\
+  !*** E:/study/小程序/LearningCenter/uni_modules/uni-datetime-picker/components/uni-datetime-picker/i18n/en.json ***!
+  \***************************************************************************************************************/
 /*! exports provided: uni-datetime-picker.selectDate, uni-datetime-picker.selectTime, uni-datetime-picker.selectDateTime, uni-datetime-picker.startDate, uni-datetime-picker.endDate, uni-datetime-picker.startTime, uni-datetime-picker.endTime, uni-datetime-picker.ok, uni-datetime-picker.clear, uni-datetime-picker.cancel, uni-calender.MON, uni-calender.TUE, uni-calender.WED, uni-calender.THU, uni-calender.FRI, uni-calender.SAT, uni-calender.SUN, default */
 /***/ (function(module) {
 
@@ -3679,10 +3885,10 @@ module.exports = JSON.parse("{\"uni-datetime-picker.selectDate\":\"select date\"
 
 /***/ }),
 
-/***/ 188:
-/*!*****************************************************************************************************************************!*\
-  !*** C:/Users/ywhf/Desktop/学生事务中心/booking/uni_modules/uni-datetime-picker/components/uni-datetime-picker/i18n/zh-Hans.json ***!
-  \*****************************************************************************************************************************/
+/***/ 209:
+/*!********************************************************************************************************************!*\
+  !*** E:/study/小程序/LearningCenter/uni_modules/uni-datetime-picker/components/uni-datetime-picker/i18n/zh-Hans.json ***!
+  \********************************************************************************************************************/
 /*! exports provided: uni-datetime-picker.selectDate, uni-datetime-picker.selectTime, uni-datetime-picker.selectDateTime, uni-datetime-picker.startDate, uni-datetime-picker.endDate, uni-datetime-picker.startTime, uni-datetime-picker.endTime, uni-datetime-picker.ok, uni-datetime-picker.clear, uni-datetime-picker.cancel, uni-calender.SUN, uni-calender.MON, uni-calender.TUE, uni-calender.WED, uni-calender.THU, uni-calender.FRI, uni-calender.SAT, default */
 /***/ (function(module) {
 
@@ -3690,10 +3896,10 @@ module.exports = JSON.parse("{\"uni-datetime-picker.selectDate\":\"选择日期\
 
 /***/ }),
 
-/***/ 189:
-/*!*****************************************************************************************************************************!*\
-  !*** C:/Users/ywhf/Desktop/学生事务中心/booking/uni_modules/uni-datetime-picker/components/uni-datetime-picker/i18n/zh-Hant.json ***!
-  \*****************************************************************************************************************************/
+/***/ 210:
+/*!********************************************************************************************************************!*\
+  !*** E:/study/小程序/LearningCenter/uni_modules/uni-datetime-picker/components/uni-datetime-picker/i18n/zh-Hant.json ***!
+  \********************************************************************************************************************/
 /*! exports provided: uni-datetime-picker.selectDate, uni-datetime-picker.selectTime, uni-datetime-picker.selectDateTime, uni-datetime-picker.startDate, uni-datetime-picker.endDate, uni-datetime-picker.startTime, uni-datetime-picker.endTime, uni-datetime-picker.ok, uni-datetime-picker.clear, uni-datetime-picker.cancel, uni-calender.SUN, uni-calender.MON, uni-calender.TUE, uni-calender.WED, uni-calender.THU, uni-calender.FRI, uni-calender.SAT, default */
 /***/ (function(module) {
 
@@ -3701,15 +3907,15 @@ module.exports = JSON.parse("{\"uni-datetime-picker.selectDate\":\"選擇日期\
 
 /***/ }),
 
-/***/ 197:
-/*!*******************************************************************************************************************!*\
-  !*** C:/Users/ywhf/Desktop/学生事务中心/booking/uni_modules/uni-datetime-picker/components/uni-datetime-picker/util.js ***!
-  \*******************************************************************************************************************/
+/***/ 218:
+/*!**********************************************************************************************************!*\
+  !*** E:/study/小程序/LearningCenter/uni_modules/uni-datetime-picker/components/uni-datetime-picker/util.js ***!
+  \**********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _calendar = _interopRequireDefault(__webpack_require__(/*! ./calendar.js */ 198));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}function _createClass(Constructor, protoProps, staticProps) {if (protoProps) _defineProperties(Constructor.prototype, protoProps);if (staticProps) _defineProperties(Constructor, staticProps);return Constructor;}var
+Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _calendar = _interopRequireDefault(__webpack_require__(/*! ./calendar.js */ 219));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _classCallCheck(instance, Constructor) {if (!(instance instanceof Constructor)) {throw new TypeError("Cannot call a class as a function");}}function _defineProperties(target, props) {for (var i = 0; i < props.length; i++) {var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);}}function _createClass(Constructor, protoProps, staticProps) {if (protoProps) _defineProperties(Constructor.prototype, protoProps);if (staticProps) _defineProperties(Constructor, staticProps);return Constructor;}var
 
 Calendar = /*#__PURE__*/function () {
   function Calendar()
@@ -4121,10 +4327,10 @@ Calendar;exports.default = _default;
 
 /***/ }),
 
-/***/ 198:
-/*!***********************************************************************************************************************!*\
-  !*** C:/Users/ywhf/Desktop/学生事务中心/booking/uni_modules/uni-datetime-picker/components/uni-datetime-picker/calendar.js ***!
-  \***********************************************************************************************************************/
+/***/ 219:
+/*!**************************************************************************************************************!*\
+  !*** E:/study/小程序/LearningCenter/uni_modules/uni-datetime-picker/components/uni-datetime-picker/calendar.js ***!
+  \**************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -4675,37 +4881,6 @@ var calendar = {
 
 
 calendar;exports.default = _default;
-
-/***/ }),
-
-/***/ 2:
-/*!***********************************!*\
-  !*** (webpack)/buildin/global.js ***!
-  \***********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || new Function("return this")();
-} catch (e) {
-	// This works if the window reference is available
-	if (typeof window === "object") g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
 
 /***/ }),
 
@@ -11226,9 +11401,9 @@ function resolveLocaleChain(locale) {
 /***/ }),
 
 /***/ 5:
-/*!*******************************************************!*\
-  !*** C:/Users/ywhf/Desktop/学生事务中心/booking/pages.json ***!
-  \*******************************************************/
+/*!**********************************************!*\
+  !*** E:/study/小程序/LearningCenter/pages.json ***!
+  \**********************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 

@@ -87,6 +87,14 @@
 		    }
 		    
 		}
+		,{
+			"path":"pages/booking_detail/informed_detail",
+			"style" :
+			{
+			    "navigationBarTitleText": "",
+			    "enablePullDownRefresh": false
+			}
+		}
     ],
 	// #ifdef MP-WEIXIN
 	"globalStyle": {

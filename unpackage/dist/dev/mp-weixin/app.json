@@ -9,7 +9,8 @@
     "pages/square_detail/square_detail",
     "pages/booking_detail/booking_detail",
     "pages/person/person",
-    "pages/task/task"
+    "pages/task/task",
+    "pages/booking_detail/informed_detail"
   ],
   "subPackages": [],
   "window": {
@@ -45,6 +46,5 @@
       }
     ]
   },
-  "usingComponents": {},
-  "sitemapLocation": "sitemap.json"
+  "usingComponents": {}
 }
